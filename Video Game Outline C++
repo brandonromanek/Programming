@@ -4,8 +4,9 @@
 
 using namespace std;
 string username {"Username"};
-string password {"Password"};
+string password {"winston"};
 //Player Initialization
+string character_name;
 int player_strength{1};
 int player_intelligence{1};
 int player_agility{1};
@@ -15,7 +16,127 @@ int allocation1{0};
 int allocation2{0};
 int allocation3{0};
 int allocation4{0};
-int player_rank{1};
+int player_inventory_space{10};
+bool has_ar = false;
+bool has_backpack1 = false;
+bool has_backpack2 = false;
+bool has_bat = false;
+bool has_boots = false;
+bool has_butcher_knife = false;
+bool has_chainsaw = false;
+bool has_code_note = false;
+bool has_crowbar = false;
+bool has_flashlight = false;
+bool has_gps = false;
+bool has_green_card = false;
+bool has_handgun = false;
+bool has_knife = false;
+bool has_meat = false;
+bool has_posion = false;
+bool has_red_card = false;
+bool has_revolver = false;
+bool has_sewer_key = false;
+bool has_shotgun = false;
+bool storage_door_unlocked = false;
+bool generator_on = false;
+bool has_research_key = false;
+
+//Game Initialization
+int start_choice{0};
+int backyard_choice{0};
+int frontyard_choice{0};
+int street1_choice{0};
+int sidewalk1_choice{0};
+int powertools_choice{0};
+int hardwarestore_choice{0};
+int appliances_choice{0};
+int sidewalk2_choice{0};
+int sidewalk3_choice{0};
+int backoffice_choice{0};
+int alley_choice{0};
+int swsewer_choice{0};
+int nwsewer_choice{0};
+int garage_choice{0};
+int mailbox_choice{0};
+int street2_choice{0};
+int street3_choice{0};
+int street4_choice{0};
+int street5_choice{0};
+int street6_choice{0};
+int street7_choice{0};
+int sidewalk4_choice{0};
+int market_choice{0};
+int storageroom1_choice{0};
+int dumpster_choice{0};
+int sidewalk5_choice{0};
+int sidewalk6_choice{0};
+int sidewalk7_choice{0};
+int street8_choice{0};
+int classroom_choice{0};
+int computerlab_choice{0};
+int lockerroom_choice{0};
+int bathroom_choice{0};
+int street9_choice{0};
+int sidewalk8_choice{0};
+int sidewalk9_choice{0};
+int sidewalk10_choice{0};
+int parkinglot3_choice{0};
+int sidewalk11_choice{0};
+int parkinglot1_choice{0};
+int parkinglot2_choice{0};
+int street10_choice{0};
+int northhallway_choice{0};
+int researchroom_choice{0};
+int office_choice{0};
+int lobby_choice{0};
+int buildingfront_choice{0};
+int sidewalk12_choice{0};
+int sidewalk13_choice{0};
+int sportinggoods_choice{0};
+int shoearea_choice{0};
+int sidewalk14_choice{0};
+int kitchen_choice{0};
+int restaurant_choice{0};
+int street11_choice{0};
+int storageroom2_choice{0};
+int breakroom_choice{0};
+int basement_choice{0};
+int boilerroom_choice{0};
+int street12_choice{0};
+int sidewalk15_choice{0};
+int sidewalk16_choice{0};
+int sidewalk17_choice{0};
+int sidewalk18_choice{0};
+int sidewalk19_choice{0};
+int sidewalk20_choice{0};
+int sidewalk21_choice{0};
+int street13_choice{0};
+int street14_choice{0};
+int street15_choice{0};
+int street16_choice{0};
+int street17_choice{0};
+int street18_choice{0};
+int sidewalk22_choice{0};
+int frontdesk_choice{0};
+int powerplant_choice{0};
+int sesewer_choice{0};
+int nesewer_choice{0};
+int sidewalk23_choice{0};
+int sidewalk24_choice{0};
+int sidewalk25_choice{0};
+int guns_choice{0};
+int armory_choice{0};
+int vault_choice{0};
+int sidewalk26_choice{0};
+int sidewalk27_choice{0};
+int sidewalk28_choice{0};
+int junkyard_choice{0};
+int terminal_choice{0};
+int escape_choice{0};
+int randomcode = rand() % 1000 + 9999;
+int random_code_note = randomcode;
+bool dog_alive == true;
+
 
 //Save Initialization
 string save_file1{"Empty"};
@@ -59,7 +180,6 @@ int main()
 
         //Player Creation
         player_creation:
-        string character_name;
         cout << "Enter your character's name: ";
         cin >> character_name;
         cout << "Character name set to " << character_name << "." <<endl;
@@ -774,15 +894,3486 @@ int main()
     
     //Game Start
     game_start:
-    
     cout << "You awake in a strange room with no recollection of how you arrived there." << endl;
-    cout << "There are 3 doors in the room." << endl;
-    cout << "(1) Western Door" << endl;
-    cout << "(2) Northern Door" << endl;
-    cout << "(3) Eastern Door" << endl;
+    //Starting House
+    start:
+    cout << "(1) Northern Door" << endl;
+    cout << "(2) Eastern Door" << endl;
+    cout << "(3) Southern Door" << endl;
+    cout << "(4) Western Window" << endl;
     cout << endl;
-    int door_choice1{0};
-    cin >> door_choice1;
+    
+    cin >> start_choice;
+    if (start_choice == 1)
+    {
+        cout << "You enter the northern door out to the backyard." << endl;
+        goto backyard;
+    }
+    if (start_choice == 2)
+    {
+        cout << "You enter the eastern door into the garage." << endl;
+        goto garage;
+    }
+    if (start_choice == 3)
+    {
+        if (has_crowbar == true && player_strength > 4)
+        {
+            cout << "You pry the door open with the crowbar." << endl;
+            goto frontyard;
+        }
+        if (has_crowbar == true && player_strength < 5)
+        {
+            cout << "You pry the door open with the crowbar." << endl;
+            goto frontyard;
+        }
+        if (has_crowbar == false)
+        {
+            cout << "You pull on the door, but it will not open." << endl;
+            goto start;
+        }
+        if (player_strength > 4 && has_crowbar == false)
+        {
+            cout << "You force open the door using brute force." << endl;
+            goto frontyard;
+        }
+    }
+    if (start_choice == 4)
+    {
+        cout << "You see a large body of water." << endl;
+        goto start;
+    }
+    if (start_choice < 1 || start_choice > 4)
+    {
+        cout << "Invalid Selection.";
+        goto start;
+    }
+    
+    //Backyard
+    backyard:
+    cout << "(1) Fence" << endl;
+    cout << "(2) Trashcan" << endl;
+    cout << "(3) Bush" << endl;
+    cout << "(4) Southern Door" << endl;
+    
+    cin >> backyard_choice;
+    if (backyard_choice == 1)
+    {
+        cout << "It looks pretty high. No use in trying to get over that." << endl;
+        goto backyard;
+    }
+    if (backyard_choice == 2)
+    {
+        cout << "You find some useless garbage." << endl;
+        goto backyard;
+    }
+    if (backyard_choice == 3)
+    {
+        if (has_knife == false)
+        {
+            cout << "You find a knife." << endl;
+            has_knife == true;
+            goto backyard;
+        }
+        if (has_knife == true)
+        {
+            cout << "It's just a plain old bush now." << endl;
+            goto backyard;
+        }
+    }
+    if (backyard_choice == 4)
+    {
+        cout << "You go back into the house." << endl;
+        goto start;
+    }
+    if (backyard_choice < 1 || backyard_choice > 4)
+    {
+        cout << "Invalid Selection." << endl;
+        goto backyard;
+    }
+    
+    //Front Yard
+    frontyard:
+    cout << "(1) Ocean" << endl;
+    cout << "(2) Northern Door" << endl;
+    cout << "(3) East" << endl;
+    cout << "(4) Southern Gate" << endl;
+    
+    cin >> frontyard_choice;
+    if (frontyard_choice == 1)
+    {
+        cout << "It's a great view of the ocean... But not a viable method of travel." << endl;
+        goto frontyard;
+    }
+    if (frontyard_choice == 2)
+    {
+        cout << "You enter the house." << endl;
+        goto start;
+    }
+    if (frontyard_choice == 3)
+    {
+        cout << "You head east toward the mailbox." << endl;
+        goto mailbox;
+    }
+    if (frontyard_choice == 4)
+    {
+        cout << "You go through the southern gate onto the street." << endl;
+        goto street1;
+    }
+    if (frontyard_choice < 1 || frontyard_choice > 4)
+    {
+        cout << "Invalid Selection." << endl;
+        goto frontyard;
+    }
+    //Street 1
+    street1:
+    cout << "(1) Garbage Can" << endl;
+    cout << "(2) Northern Gate" << endl;
+    cout << "(3) East" << endl;
+    cout << "(4) South" << endl;
+    
+    cin >> street1_choice;
+    
+    if (street1_choice == 1)
+    {
+        cout << "Do you really want to dig through the garbage?" << endl;
+        goto street1;
+    }
+    if (street1_choice == 2)
+    {
+        cout << "You enter the gate back to the front yard." << endl;
+        goto frontyard;
+    }
+    if (street1_choice == 3)
+    {
+        cout << "You go east on the street." << endl;
+        goto street2;
+    }
+    if (street1_choice == 4)
+    {
+        cout << "You go south onto the sidewalk." << endl;
+        goto sidewalk1;
+    }
+    if (street1_choice < 1 || street1_choice > 4)
+    {
+        cout << "Invalid Selection." << endl;
+        goto street1;
+    }
+    
+    //Sidewalk 1
+    sidewalk1:
+    cout << "(1) North" << endl;
+    cout << "(2) East" << endl;
+    cout << "(3) Southern Window" << endl;
+    
+    cin >> sidewalk1_choice;
+    
+    if (sidewalk1_choice == 1)
+    {
+        cout << "You go north onto the street." << endl;
+        goto street1;
+    }
+    if (sidewalk1_choice == 2)
+    {
+        cout << "You go east onto the street." << endl;
+        goto street3;
+    }
+    if (sidewalk1_choice == 3)
+    {
+        cout << "You see some gnarly looking power tools ready for the taking." << endl;
+        goto sidewalk1;
+    }
+    if (sidewalk1_choice < 1 || sidewalk1_choice > 3)
+    {
+        cout << "Invalid Selection." << endl;
+        goto sidewalk1;
+    }
+    
+    //Power Tools
+    powertools:
+    cout << "(1) Power Tool Section" << endl;
+    cout << "(2) Southern Door" << endl;
+    
+    cin >> powertools_choice;
+    
+    if (powertools_choice == 1)
+    {
+        if (has_chainsaw == false)
+        {
+            cout << "You find a chainsaw!" << endl;
+            has_chainsaw == true;
+            goto powertools;
+        }
+        if (has_chainsaw == true)
+        {
+            cout << "There will be no duel-wielding of chainsaws today." << endl;
+            goto powertools;
+        }
+    }
+    if (powertools_choice == 2)
+    {
+        cout << "You enter the door into the main hardware store." << endl;
+        goto hardwarestore;
+    }
+    if (powertools_choice < 1 || powertools_choice > 2)
+    {
+        cout << "Invalid Selection." << endl;
+        goto powertools;
+    }
+    //Hardware Store
+    hardwarestore:
+    cout << "(1) Backpack" << endl;
+    cout << "(2) Northern Door" << endl;
+    cout << "(3) Eastern Exit" << endl;
+    cout << "(4) Southern Door" << endl;
+    
+    cin >> hardwarestore_choice;
+    
+    if (hardwarestore_choice == 1)
+    {
+        if (has_backpack1 == false)
+        {
+            cout << "You find a backpack. You can now carry 15 items!" << endl;
+            has_backpack1 == true;
+            player_inventory_space == 15;
+            goto hardwarestore;
+        }
+        if (has_backpack1 = true || has_backpack2 == true)
+        {
+            cout << "You already have a backpack." << endl;
+            goto hardwarestore;
+        }
+    }
+    if (hardwarestore_choice == 2)
+    {
+        cout << "You go through the northern door to the power tools." << endl;
+        goto powertools;
+    }
+    if (hardwarestore_choice == 3)
+    {
+        cout << "You go out of the eastern exit into the street." << endl;
+        goto street5;
+    }
+    if (hardwarestore_choice == 4)
+    {
+        cout << "You go through the southern door to the appliances." << endl;
+        goto appliances;
+    }
+    if (hardwarestore_choice < 1 || hardwarestore_choice > 4)
+    {
+        cout << "Invalid Selection." << endl;
+        goto hardwarestore;
+    }
+    
+    //Appliances
+    appliances:
+    cout << "(1) Northern Door" << endl;
+    
+    cin >> appliances_choice;
+    if (appliances_choice == 1)
+    {
+        cout << "You go through the northern door to the Hardware Store." << endl;
+        goto hardwarestore;
+    }
+    if (appliances_choice < 1 || appliances_choice > 1)
+    {
+        cout << "Invalid Selection." << endl;
+        goto appliances;
+    }
+    
+    //Sidewalk 2
+    sidewalk2:
+    cout << "(1) Northern Window" << endl;
+    cout << "(2) East" << endl;
+    cout << "(3) South" << endl;
+    
+    cin >> sidewalk2_choice;
+    
+    if (sidewalk2_choice == 1)
+    {
+        cout << "You see some fancy appliances." << endl;
+        goto sidewalk2;
+    }
+    if (sidewalk2_choice == 2)
+    {
+        cout << "You go east onto the street." << endl;
+        goto street7;
+    }
+    if (sidewalk2_choice == 3)
+    {
+        cout << "You go south on the sidewalk." << endl;
+    }
+    if (sidewalk2_choice < 1 || sidewalk2_choice > 3)
+    {
+        cout << "Invalid Selection." << endl;
+        goto sidewalk2;
+    }
+    
+    //Sidewalk 3
+    sidewalk3:
+    cout << "(1) North" << endl;
+    cout << "(2) East" << endl;
+    cout << "(3) Southern Window" << endl;
+    
+    cin >> sidewalk3_choice;
+    
+    if (sidewalk3_choice == 1)
+    {
+        cout << "You go north on the sidewalk." << endl;
+        goto sidewalk2;
+    }
+    if (sidewalk3_choice == 2)
+    {
+        cout << "You go east on the sidewalk." << endl;
+        goto sidewalk4;
+    }
+    if (sidewalk3_choice == 3)
+    {
+        cout << "You see an office space." << endl;
+        goto sidewalk3;
+    }
+    if (sidewalk3_choice < 1 || sidewalk3_choice > 3)
+    {
+        cout << "Invalid Selection." << endl;
+        goto sidewalk3;
+    }
+    
+    
+    //Back Office
+    backoffice:
+    cout << "(1) Desk" << endl;
+    cout << "(2) Eastern Door" << endl;
+    cout << "(3) Southern Door" << endl;
+    
+    cin >> backoffice_choice;
+    
+    if (backoffice_choice == 1)
+    {
+        if (has_sewer_key == false)
+        {
+            cout << "You search the desk and find a small silver key." << endl;
+            has_sewer_key == true;
+            goto backoffice;
+        }
+        if (has_sewer_key == true)
+        {
+            cout << "The desk is empty except for a few pens and pencils." << endl;
+            goto backoffice;
+        }
+    }
+    if (backoffice_choice == 2)
+    {
+        cout << "You go east to the market." << endl;
+        goto market;
+    }
+    if (backoffice_choice == 3)
+    {
+        cout << "You go out of the southern door to the alley." << endl;
+        goto alley;
+    }
+    if (backoffice_choice < 1 || backoffice_choice > 3)
+    {
+        cout << "Invalid Selection." << endl;
+        goto backoffice;
+    }
+    //Alley
+    alley:
+	cout << "(1) Northern Door" << endl;
+	cout << "(2) Southern Gate Entrance" << endl;
+	
+	cin >> alley_choice;
+	
+	if (alley_choice == 1)
+	{
+		cout << "You go north to the back office." << endl;
+		goto backoffice;
+	}
+	if (alley_choice == 2)
+	{
+		if (has_sewer_key = false)
+		{
+			cout << "The door is locked." << endl;
+			goto alley;
+		}
+		if (has_sewer_key == true)
+		{
+			cout << "You use the silver key and open the door out to the Southwest Sewer." << endl;
+			goto swsewer;
+		}
+	}
+	if (alley_choice < 1 || alley_choice > 2)
+	{
+		cout << "Invalid Selection." << endl;
+		goto alley;
+	}
+    //Southwest Sewer
+    swsewer:
+    cout << "(1) North" << endl;
+	cout << "(2) Northeast Sewer" << endl;
+	cout << "(3) Garbage Pile" << endl;
+	cout << "(4) Southeast Sewer" << endl;
+	
+	cin >> swsewer_choice;
+	
+	if (swsewer_choice == 1)
+	{
+		if (has_sewer_key == false)
+		{
+			cout << "The door is locked." << endl;
+			goto swsewer;
+		}
+		if (has_sewer_key == true)
+		{
+			cout << "You go north to the alley." << endl;
+			goto alley;
+		}
+	}
+	if (swsewer_choice == 2)
+	{
+		if (has_flashlight == false)
+		{
+			cout << "It is too dark to navigate this right now." << endl;
+			goto swsewer;
+		}
+		if (has_flashlight == true)
+		{
+			cout << "It is very dark! You turn on your flashlight and venture on." << endl;
+			goto nesewer;
+		}
+	}
+	if (swsewer_choice == 3)
+	{
+		cout << "The pile is large enough to climb over the fence. Climb over? (y/n)" << endl;
+		char climb_over1;
+		cin >> climb_over1;
+		if (climb_over1 == 'y' || climb_over1 == 'Y')
+		{
+			cout << "You climb over the fence to a dumpster area." << endl;
+			goto dumpster;
+		}
+		if (climb_over1 != 'y' || climb_over1 != 'Y')
+		{
+			goto swsewer;
+		}
+	}
+	if (swsewer_choice == 4)
+	{
+		if (has_flashlight == false)
+		{
+			cout << "It is too dark to navigate this right now." << endl;
+			goto swsewer;
+		}
+		if (has_flashlight == true)
+		{
+			cout << "It is very dark! You turn on your flashlight and venture on." << endl;
+			goto sesewer;
+		}
+	}
+	if (swsewer_choice < 1 || swsewer_choice > 4)
+	{
+		cout << "Invalid Selection." << endl;
+		goto swsewer;
+	}
+    //Northwest Sewer
+    nwsewer:
+    cout << "(1) Northeast Sewer" << endl;
+	cout << "(2) Eastern Gate" << endl;
+	cout << "(3) Southwest Sewer" << endl;
+	
+	cin >> nwsewer_choice;
+	
+	if (nwsewer_choice == 1)
+	{
+		if (has_flashlight == false)
+		{
+			cout << "It is too dark to navigate this right now." << endl;
+			goto nwsewer;
+		}
+		if (has_flashlight == true)
+		{
+			cout << "It is very dark! You turn on your flashlight and venture on." << endl;
+			goto nesewer;
+		}
+	}
+	if (nwsewer_choice == 2)
+	{
+		if (has_sewer_key == false)
+		{
+			cout << "The gate is locked." << endl;
+			goto nwsewer;
+		}
+		if (has_sewer_key == true)
+		{
+			cout << "You go east onto the sidewalk." << endl;
+			goto sidewalk5;
+		}
+	}
+	if (nwsewer_choice == 3)
+	{
+		if (has_flashlight == false)
+		{
+			cout << "It is too dark to navigate this right now." << endl;
+			goto swsewer;
+		}
+		if (has_flashlight == true)
+		{
+			cout << "It is very dark! You turn on your flashlight and venture on." << endl;
+			goto nesewer;
+		}
+	}
+	if (nwsewer_choice < 1 || nwsewer_choice > 3)
+	{
+		cout << "Invalid Selection." << endl;
+		goto nwsewer;
+	}
+    //Garage
+    garage:
+    cout << "(1) Western Door" << endl;
+	cout << "(2) Workbench" << endl;
+	cout << "(3) Eastern Window" << endl;
+	cout << "(4) Broken Vehicle" << endl;
+	cout << "(5) Garage Door" << endl;
+	
+	cin >> garage_choice;
+	
+	if (garage_choice == 1)
+	{
+		cout << "You enter the western door back to the starting room." << endl;
+		goto start;
+	}
+	if (garage_choice == 2)
+	{
+		if (has_crowbar == false);
+		{
+			cout << "You find a crowbar." << endl;
+			has_crowbar == true;
+			goto garage;
+		}
+		if (has_crowbar == true)
+		{
+			cout << "There are some old rusty tools here..." << endl;
+			goto garage;
+		}
+	}
+	if (garage_choice == 3)
+	{
+		cout << "You see some lights off in the distance." << endl;
+		goto garage;
+	}
+	if (garage_choice == 4)
+	{
+		cout << "It doesn't appear to be working at the moment." << endl;
+		goto garage;
+	}
+	if (garage_choice == 5)
+	{
+		cout << "It won't budge." << endl;
+		goto garage;
+	}
+	if (garage_choice < 1 || garage_choice > 5)
+	{
+		cout << "Invalid Selection." << endl;
+		goto garage;
+	}
+    //Mailbox
+    mailbox:
+    cout << "(1) West" << endl;
+	cout << "(2) Mailbox" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> mailbox_choice;
+	
+	if (mailbox_choice == 1)
+	{
+		cout << "You go west to the front yard." << endl;
+		goto frontyard;
+	}
+	if (mailbox_choice == 2)
+	{
+		cout << "Inside you find a note:" << endl; 
+		cout << "Dear " << character_name << ", In case you haven't noticed already, there has been quite the mix-up with your lobotomy ";
+		cout << "procedure. Swing by the facility so we can explain everything." << endl;
+		cout << "Sincerely, Testron Industries" << endl;
+		goto mailbox;
+	}
+	if (mailbox_choice == 3)
+	{
+		cout << "You go east to the sidewalk." << endl;
+		goto sidewalk7;
+	}
+	if (mailbox_choice == 4)
+	{
+		cout << "You go south to the street." << endl;
+		goto street2;
+	}
+	if (mailbox_choice < 1 || mailbox_choice > 4)
+	{
+		cout << "Invalid Selection." << endl;
+		goto mailbox;
+	}
+	
+    //Street 2
+    street2:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> street2_choice;
+	
+	if (street2_choice == 1)
+	{
+		cout << "You go west on the street." << endl;
+		goto street1;
+	}
+	if (street2_choice == 2)
+	{
+		cout << "You go north to the mailbox." << endl;
+		goto mailbox;
+	}
+	if (street2_choice == 3)
+	{
+		cout << "You go east on the street." << endl;
+		goto street8;
+	}
+	if (street2_choice == 4)
+	{
+		cout << "You go south on the street." << endl;
+		goto street3;
+	}
+	if (street2_choice < 1 || street2_choice > 4)
+	{
+		cout << "Invalid Selection." << endl;
+		goto street2;
+	}
+	
+    //Street 3
+    street3:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) Eastern Window" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> street3_choice;
+	
+	if (street3_choice == 1)
+	{
+		cout << "You go west onto the sidewalk." << endl;
+		goto sidewalk1;
+	}
+	if (street3_choice == 2)
+	{
+		cout << "You go north on the street." << endl;
+		goto street2;
+	}
+	if (street3_choice == 3)
+	{
+		cout << "It looks like a classroom inside?" << endl;
+		goto street3;
+	}
+	if (street3_choice == 4)
+	{
+		cout << "You go south on the street." << endl;
+		goto street4;
+	}
+	if (street3_choice < 1 || street3_choice > 4)
+	{
+		cout << "Invalid Selection." << endl;
+		goto street3;
+	}
+    //Street 4
+    street4:
+    cout << "(1) Western Window" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) Eastern Window" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> street4_choice;
+	
+	if (street4_choice == 1)
+	{
+		cout << "You see some gnarly looking power tools ready for the taking." << endl;
+		goto street4;
+	}
+	if (street4_choice == 2)
+	{
+		cout << "You go north on the street." << endl;
+		goto street3;
+	}
+	if (street4_choice == 3)
+	{
+		cout << "There are some computers in the room on the other side." << endl;
+		goto street4;
+	}
+	if (street4_choice == 4)
+	{
+		cout << "You go south on the street." << endl;
+		goto street5;
+	}
+	if (street4_choice < 1 || street4_choice > 4)
+	{
+		cout << "Invalid Selection." << endl;
+		goto street4;
+	}
+	
+    //Street 5
+    street5:
+    cout << "(1) Western Entrance" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) Eastern Window" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> street5_choice;
+	
+	if (street5_choice == 1)
+	{
+		if (has_boots == false)
+		{
+			cout << "There is broken glass that you don't feel comfortable walking through with your current shoes." << endl;
+			goto street5;
+		}
+		if (has_boots == true)
+		{
+			cout << "You step carefully through the glass shards, being protected by your boots." << endl;
+			goto hardwarestore;
+		}
+	}
+	if (street5_choice == 2)
+	{
+		cout << "You go north on the street." << endl;
+		goto street4;
+	}
+	if (street5_choice == 3)
+	{
+		cout << "Well that's strange. Who puts a window in a locker room?" << endl;
+		goto street5;
+	}
+	if (street5_choice == 4)
+	{
+		cout << "You go south on the street." << endl;
+		goto street6;
+	}
+	if (street5_choice < 1 || street5_choice > 4)
+	{
+		cout << "Invalid Selection." << endl;
+		goto street5;
+	}
+	
+    //Street 6
+    street6:
+    cout << "(1) Western Window" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) Eastern Window" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> street6_choice;
+	
+	if (street6_choice == 1)
+	{
+	    cout << "You see some fancy appliances." << endl;
+	    goto street6;
+	}
+	if (street6_choice == 2)
+	{
+	    cout << "You go north on the street." << endl;
+	    goto street5;
+	}
+	if (street6_choice == 3)
+	{
+	    cout << "The window is high, but if you stand on your toes you can see it is a bathroom." << endl;
+	    goto street6;
+	}
+	if (street6_choice == 4)
+	{
+	    cout << "You go south on the street." << endl;
+	    goto street7;
+	}
+	if (street6_choice < 1 || street6_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto street6;
+	}
+    //Street 7
+    street7:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> street7_choice;
+	
+	if (street7_choice == 1)
+	{
+	    cout << "You go west onto the sidewalk." << endl;
+	    goto sidewalk2;
+	}
+	if (street7_choice == 2)
+	{
+	    cout << "You go north on the street." << endl;
+	    goto street6;
+	}
+	if (street7_choice == 3)
+	{
+	    cout << "You go east on the street." << endl;
+	    goto street9;
+	}
+	if (street7_choice == 4)
+	{
+	    cout << "You go south onto the sidewalk." << endl;
+	    goto sidewalk4;
+	}
+	if (street7_choice < 1 || street7_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto street7;
+	}
+    //Sidewalk 4
+    sidewalk4:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) Southern Window" << endl;
+	
+	cin >> sidewalk4_choice;
+	
+	if (sidewalk4_choice == 1)
+	{
+	    cout << "You go west on the sidewalk." << endl;
+	    goto sidewalk3;
+	}
+	if (sidewalk4_choice == 2)
+	{
+	    cout << "You go north onto the street." << endl;
+	    goto street7;
+	}
+	if (sidewalk4_choice == 3)
+	{
+	    cout << "You go east on the sidewalk." << endl;
+	    goto sidewalk8;
+	}
+	if (sidewalk4_choice == 4)
+	{
+	    cout << "You see the inside of a Market." << endl;
+	    goto sidewalk4;
+	}
+	if (sidewalk4_choice < 1 || sidewalk4_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk4;
+	}
+    //Market
+    market:
+    cout << "(1) Western Door" << endl;
+	cout << "(2) Eastern Exit" << endl;
+	cout << "(3) Southern Door" << endl;
+	
+	cin >> market_choice;
+	
+	if (market_choice == 1)
+	{
+	    cout << "You go through the western door into the back office." << endl;
+	    goto backoffice;
+	}
+	if (market_choice == 2)
+	{
+	    cout << "You go through the eastern exit onto the sidewalk." << endl;
+	    goto sidewalk9;
+	}
+	if (market_choice == 3)
+	{
+	    if (storage_door_unlocked == false && player_strength < 5)
+	    {
+	        cout << "The door is locked from the other side." << endl;
+	        goto market;
+	    }
+	    if (storage_door_unlocked == true)
+	    {
+	        cout << "You enter the southern door into the storage room." << endl;
+	        goto storageroom1;
+	    }
+	    if (player_strength > 4)
+	    {
+	        cout << "You open the door using brute force and unlock it on the other side." << endl;
+	        storage_door_unlocked == true;
+	        goto storageroom1;
+	    }
+	}
+	if (market_choice < 1 || market_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto market;
+	}
+	
+    //Storage Room 1
+    storageroom1:
+    cout << "(1) Table" << endl;
+	cout << "(2) Northern Door" << endl;
+	cout << "(3) Storage Rack" << endl;
+	cout << "(4) Southern Window" << endl;
+	
+	cin >> storageroom1_choice;
+	
+	if (storageroom1_choice == 1)
+	{
+	    if (has_flashlight == false)
+	    {
+	        cout << "You find a flashlight. This will definitely come in handy." << endl;
+	        has_flashlight == true;
+	        goto storageroom1;
+	    }
+	    if (has_flashlight == true)
+	    {
+	        cout << "You have already taken the flashlight from this table." << endl;
+	        goto storageroom1;
+	    }
+	}
+	if (storageroom1_choice == 2)
+	{
+	    if (storage_door_unlocked == false)
+	    {
+	        cout << "You unlock the door on the way out." << endl;
+	        storage_door_unlocked == true;
+	        goto market;
+	    }
+	    if (storage_door_unlocked == true)
+	    {
+	        cout << "You go through the door and into the market." << endl;
+	        goto market;
+	    }
+	}
+	if (storageroom1_choice == 3)
+	{
+	    if (has_handgun == false)
+	    {
+	        cout << "You find a handgun with a box of ammunition." << endl;
+	        has_handgun == true;
+	        goto storageroom1;
+	    }
+	    if (has_handgun == true)
+	    {
+	        cout << "The rack is empty." << endl;
+	        goto storageroom1;
+	    }
+	}
+	if (storageroom1_choice == 4)
+	{
+	    cout << "The window is open and leads out to a dumpster area. Go through it? (y/n)" << endl;
+	    char open_window;
+	    cin >> open_window;
+	    if (open_window == 'y' || open_window == 'Y')
+	    {
+	        cout << "You climb through the window." << endl;
+	        goto dumpster;
+	    }
+	    if (open_window != 'y' || open_window != 'Y')
+	    {
+	        goto storageroom1;
+	    }
+	}
+	if (storageroom1_choice < 1 || storageroom1_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto storageroom1;
+	}
+	
+    //Dumpster
+    dumpster:
+    cout << "(1) Garbage Pile" << endl;
+	cout << "(2) Northern Window" << endl;
+	cout << "(3) Eastern Gate" << endl;
+	cout << "(4) Dumpster" << endl;
+	
+	cin >> dumpster_choice;
+	
+	if (dumpster_choice == 1)
+	{
+	    cout << "The pile is large enough to climb over the fence. Climb over? (y/n)" << endl;
+	    char climb_over2;
+	    cin >> climb_over2;
+	    
+	    if (climb_over2 == 'y' || climb_over2 == 'Y')
+	    {
+	        cout << "You climb over the fence." << endl;
+	        goto swsewer;
+	    }
+	    if (climb_over2 != 'y' || climb_over2 != 'Y')
+	    {
+	        goto dumpster;
+	    }
+	}
+	if (dumpster_choice == 2)
+	{
+	    cout << "The window is open and leads into a storage area. Go through it? (y/n)" << endl;
+	    char open_window1;
+	    cin >> open_window1;
+	    if (open_window1 == 'y' || open_window1 == 'Y')
+	    {
+	        cout << "You climb through the window." << endl;
+	        goto storageroom1;
+	    }
+	    if (open_window1 != 'y' || open_window1 != 'Y')
+	    {
+	        goto dumpster;
+	    }
+	}
+	if (dumpster_choice == 3)
+	{
+	    cout << "It is locked from the outside." << endl;
+	    goto dumpster;
+	}
+	if (dumpster_choice == 4)
+	{
+	    cout << "You peek into the dumpster but stop quickly after an awful smell comes from within." << endl;
+	    goto dumpster;
+	}
+	if (dumpster_choice < 1 || dumpster_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto dumpster;
+	}
+    //Sidewalk 5
+    sidewalk5:
+    cout << "(1) Northwest Sewer" << endl;
+	cout << "(2) East" << endl;
+	cout << "(3) South" << endl;
+	
+	cin >> sidewalk5_choice;
+	
+	if (sidewalk5_choice == 1)
+	{
+	    if (has_sewer_key == false)
+	    {
+	        cout << "The gate is locked." << endl;
+	        goto sidewalk5;
+	    }
+	    if (has_sewer_key == true)
+	    {
+	        cout << "You go west to the Northwest Sewer." << endl;
+	        goto nwsewer;
+	    }
+	}
+	if (sidewalk5_choice == 2)
+	{
+	    cout << "You go east on the sidewalk." << endl;
+	    goto sidewalk11;
+	}
+	if (sidewalk5_choice == 3)
+	{
+	    cout << "You go south on the sidewalk." << endl;
+	    goto sidewalk6;
+	}
+	if (sidewalk5_choice < 1 || sidewalk5_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk5;
+	}
+	
+    //Sidewalk 6
+    sidewalk6:
+    cout << "(1) Western Window" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> sidewalk6_choice;
+	
+	if (sidewalk6_choice == 1)
+	{
+	    cout << "You see a car and other garage-dwelling essentials." << endl;
+	    goto sidewalk6;
+	}
+	if (sidewalk6_choice == 2)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk5;
+	}
+	if (sidewalk6_choice == 3)
+	{
+	    cout << "You go east to a parking lot." << endl; 
+	    goto parkinglot1;
+	}
+	if (sidewalk6_choice == 4)
+	{
+	    cout << "You go south on the sidewalk." << endl; 
+	    goto sidewalk7;
+	}
+	if (sidewalk6_choice < 1 || sidewalk6_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk6;
+	}
+	
+    //Sidewalk 7
+    sidewalk7:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> sidewalk7_choice;
+	
+	if (sidewalk7_choice == 1)
+	{
+	    cout << "You go west to a mailbox." << endl;
+	    goto mailbox;
+	}
+	if (sidewalk7_choice == 2)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk6;
+	}
+	if (sidewalk7_choice == 3)
+	{
+	    cout << "You go east to a parking lot." << endl;
+	    goto parkinglot2;
+	}
+	if (sidewalk7_choice == 4)
+	{
+	    cout << "You go south onto the street." << endl;
+	    goto street8;
+	}
+	if (sidewalk7_choice < 1 || sidewalk7_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk7;
+	}
+    //Street 8
+    street8:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) Southern Window" << endl;
+	
+	cin >> street8_choice;
+	
+	if (sidewalk8_choice == 1)
+	{
+	    cout << "You go west on the street." << endl;
+	    goto street2;
+	}
+	if (sidewalk8_choice == 2)
+	{
+	    cout << "You go north onto the sidewalk." << endl;
+	    goto sidewalk7;
+	}
+	if (sidewalk8_choice == 3)
+	{
+	    cout << "You go east on the street." << endl;
+	    goto street10;
+	}
+	if (sidewalk8_choice == 4)
+	{
+	    cout << "It looks like maybe a classroom inside?" << endl;
+	    goto sidewalk8;
+	}
+	if (sidewalk8_choice < 1 || sidewalk8_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk8;
+	}
+    //Classroom
+    classroom:
+    cout << "(1) Desk" << endl;
+	cout << "(2) Chalkboard" << endl;
+	cout << "(3) Eastern Door" << endl;
+	cout << "(4) Southern Door" << endl;
+	
+	cin >> classroom_choice;
+	
+	if (classroom_choice == 1)
+	{
+	    cout << "Eww. A rotten apple." << endl;
+	    goto classroom;
+	}
+	if (classroom_choice == 2)
+	{
+	    cout << "It appears to be a classroom where lectures on lobotomy take place..."; 
+	    cout << " judging by the skull and brain drawn on the chalkboard in rather explicit detail." << endl;
+	    goto classroom;
+	}
+	if (classroom_choice == 3)
+	{
+	    cout << "You go east into a hallway." << endl;
+	    goto northhallway;
+	}
+	if (classroom_choice == 4)
+	{
+	    cout << "You go through the southern door into a computer lab." << endl;
+	    goto computerlab;
+	}
+	if (classroom_choice < 1 || classroom_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto classroom;
+	}
+    //Computer Lab
+    computerlab:
+    cout << "(1) Computer" << endl;
+	cout << "(2) Northern Door" << endl;
+	cout << "(3) Southern Door" << endl;
+	
+	cin >> computerlab_choice;
+	
+	if (computerlab_choice == 1)
+	{
+	    if (generator_on = true)
+	    {
+	        cout << "You boot up the PC and are prompted to enter a password." << endl;
+	        cin >> password;
+	        
+	        if (password == "winston")
+	        {
+	            cout << "Access granted. Initiate operations? (y/n)" << endl;
+	            char initiate;
+	            cin >> initiate;
+	            if (initiate == 'y' || initiate == 'Y')
+	            {
+	                cout << "An explosion is heard off in the distance." << endl;
+	            }
+	            if (initiate != 'y' || initiate != 'Y')
+	            {
+	                cout << "Your judgement was probably correct." << endl;
+	                goto computerlab;
+	            }
+	        }
+	        if (password != "winston")
+	        {
+	            cout << "Access Denied." << endl;
+	            goto computerlab;
+	        }
+	    }
+	    if (generator_on == false)
+	    {
+	        cout << "The power is off." << endl;
+	        goto computerlab;
+	    }
+	}
+	if (computerlab_choice == 2)
+	{
+	    cout << "You go through the northern door to a Classroom." << endl;
+	    goto classroom;
+	}
+	if (computerlab_choice == 3)
+	{
+	    cout << "You go through the southern door to a Locker Room." << endl;
+	    goto lockerroom;
+	}
+	if (computerlab_choice < 1 || computerlab_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto computerlab;
+	}
+	
+    //Locker Room
+    lockerroom:
+    cout << "(1) Shower" << endl;
+	cout << "(2) Northern Door" << endl;
+	cout << "(3) Lockers" << endl;
+	cout << "(4) Southern Door" << endl;
+	
+	cin >> lockerroom_choice;
+	
+	if (lockerroom_choice == 1)
+	{
+	    cout << "You feel disgusting but there is no time for a shower." << endl;
+	    goto lockerroom;
+	}
+	if (lockerroom_choice == 2)
+	{
+	    cout << "You go through the northern door into a Computer Lab." << endl;
+	    goto computerlab;
+	}
+	if (lockerroom_choice == 3)
+	{
+	    cout << "They are unlocked, but there doesn't seem to be anything useful in them." << endl;
+	    goto lockerroom;
+	}
+	if (lockerroom_choice == 4)
+	{
+	    cout << "You go through the southern door into a Bathroom." << endl;
+	    goto bathroom;
+	}
+	if (lockerroom_choice < 1 || lockerroom_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto lockerroom;
+	}
+    //Bathroom
+    bathroom:
+    cout << "(1) Stall 1" << endl;
+	cout << "(2) Stall 2" << endl;
+	cout << "(3) Stall 3" << endl;
+	cout << "(4) Northern Door" << endl;
+	cout << "(5) Eastern Hallway" << endl;
+	
+	cin >> bathroom_choice;
+	
+	if (bathroom_choice == 1)
+	{
+	    cout << "It is locked from the inside. Who does that??" << endl;
+	    goto bathroom;
+	}
+	if (bathroom_choice == 2)
+	{
+	    cout << "You open the stall and see a world record just waiting to be discovered." << endl;
+	    goto bathroom;
+	}
+	if (bathroom_choice == 3)
+	{
+	    cout << "You open the stall and see some toilet paper. You don't bother taking it." << endl;
+	    goto bathroom;
+	}
+	if (bathroom_choice == 4)
+	{
+	    cout << "You go through the northern door into a Locker Room." << endl;
+	    goto lockerroom;
+	}
+	if (bathroom_choice == 5)
+	{
+	    cout << "You go through the eastern hallway into the Lobby." << endl;
+	    goto lobby;
+	}
+	if (bathroom_choice < 1 || bathroom_choice > 5)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto bathroom;
+	}
+	
+    //Street 9
+    street9:
+    cout << "(1) West" << endl;
+	cout << "(2) Northern Window" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> street9_choice;
+	
+	if (street9_choice == 1)
+	{
+	    cout << "You go west on the street." << endl;
+	    goto street7;
+	}
+	if (street9_choice == 2)
+	{
+	    cout << "The window is high, but if you stand on your toes you can see it is a bathroom." << endl;
+	    goto street9;
+	}
+	if (street9_choice == 3)
+	{
+	    cout << "You go east to a Building Front." << endl;
+	    goto buildingfront;
+	}
+	if (street9_choice == 4)
+	{
+	    cout << "You go south onto a sidewalk." << endl;
+	    goto sidewalk8;
+	}
+	if (street9_choice < 1 || street9_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto street9;
+	}
+    //Sidewalk 8
+    sidewalk8:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> sidewalk8_choice;
+	
+	if (sidewalk8_choice == 1)
+	{
+	    cout << "You go west on the sidewalk." << endl;
+	    goto sidewalk4;
+	}
+	if (sidewalk8_choice == 2)
+	{
+	    cout << "You go north onto the street." << endl;
+	    goto street9;
+	}
+	if (sidewalk8_choice == 3)
+	{
+	    cout << "You go east on the sidewalk." << endl;
+	    goto sidewalk12;
+	}
+	if (sidewalk8_choice == 4)
+	{
+	    cout << "You go south on the sidewalk." << endl;
+	    goto sidewalk9;
+	}
+	if (sidewalk8_choice < 1 || sidewalk8_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk8;
+	}
+    //Sidewalk 9
+    sidewalk9:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> sidewalk9_choice;
+	
+	if (sidewalk9_choice == 1)
+	{
+	    cout << "You go west into a Market." << endl;
+	    goto market;
+	}
+	if (sidewalk9_choice == 2)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk8;
+	}
+	if (sidewalk9_choice == 3)
+	{
+	    cout << "You go east on the sidewalk." << endl;
+	    goto sidewalk13;
+	}
+	if (sidewalk9_choice == 4)
+	{
+	    cout << "You go south on the sidewalk." << endl;
+	    goto sidewalk10;
+	}
+	if (sidewalk9_choice < 1 || sidewalk9_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk9;
+	}
+    //Sidewalk 10
+    sidewalk10:
+    cout << "(1) Western Window" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) Eastern Window" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> sidewalk10_choice;
+	
+	if (sidewalk10_choice == 1)
+	{
+	    cout << "Not much to see considering a large rack with boxes is blocking the window." << endl;
+	    goto sidewalk10;
+	}
+	if (sidewalk10_choice == 2)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk9;
+	}
+	if (sidewalk10_choice == 3)
+	{
+	    cout << "You see some sporting goods!" << endl;
+	    goto sidewalk10;
+	}
+	if (sidewalk10_choice == 4)
+	{
+	    cout << "You go south into a parking lot." << endl;
+	    goto parkinglot3;
+	}
+	if (sidewalk10_choice < 1 || sidewalk10_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk10;
+	}
+    //Parking Lot 3
+    parkinglot3:
+    cout << "(1) Western Gate" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) Vehicle" << endl;
+	
+	cin >> parkinglot3_choice;
+	
+	if (parkinglot3_choice == 1)
+	{
+	    cout << "It is locked." << endl;
+	    goto parkinglot3;
+	}
+	if (parkinglot3_choice == 2)
+	{
+	    cout << "You go north onto the sidewalk." << endl;
+	    goto sidewalk10;
+	}
+	if (parkinglot3_choice == 3)
+	{
+	    cout << "It is locked." << endl;
+	    goto parkinglot3;
+	}
+	if (parkinglot3_choice < 1 || parkinglot3_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto parkinglot3;
+	}
+	
+    //Sidewalk 11
+    sidewalk11:
+    cout << "(1) West" << endl;
+	cout << "(2) East" << endl;
+	cout << "(3) South" << endl;
+	
+	cin >> sidewalk11_choice;
+	
+	if (sidewalk11_choice == 1)
+	{
+	    cout << "You go west on the sidewalk." << endl;
+	    goto sidewalk5;
+	}
+	if (sidewalk11_choice == 2)
+	{
+	    cout << "You go east on the sidewalk." << endl;
+	    goto sidewalk14;
+	}
+	if (sidewalk11_choice == 3)
+	{
+	    cout << "You go south to a parking lot." << endl;
+	    goto parkinglot1;
+	}
+	if (sidewalk11_choice < 1 || sidewalk11_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk11;
+	}
+	
+    //Parking Lot 1
+    parkinglot1:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) Eastern Window" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> parkinglot1_choice;
+	
+	if (parkinglot1_choice == 1)
+	{
+	    cout << "You go west onto the sidewalk." << endl;
+	    goto sidewalk6;
+	}
+	if (parkinglot1_choice == 2)
+	{
+	    cout << "You go north onto the sidewalk." << endl;
+	    goto sidewalk11;
+	}
+	if (parkinglot1_choice == 3)
+	{
+	    cout << "You see a dirty and unsanitary looking kitchen." << endl;
+	    goto parkinglot1;
+	}
+	if (parkinglot1_choice == 4)
+	{
+	    cout << "You go south through the parking lot." << endl;
+	    goto parkinglot2;
+	}
+	if (parkinglot1_choice < 1 || parkinglot1_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto parkinglot1;
+	}
+    //Parking Lot 2
+    parkinglot2:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) Eastern Window" << endl;
+	cout << "(4) South" << endl;
+	cout << "(5) Vehicle" << endl;
+	
+	cin >> parkinglot2_choice;
+	
+	if (parkinglot2_choice == 1)
+	{
+	    cout << "You go west onto the sidewalk." << endl;
+	    goto sidewalk7;
+	}
+	if (parkinglot2_choice == 2)
+	{
+	    cout << "You go north through the parking lot." << endl;
+	    goto parkinglot1;
+	}
+	if (parkinglot2_choice == 3)
+	{
+	    cout << "You see a restaurant on the inside." << endl;
+	    goto parkinglot2;
+	}
+	if (parkinglot2_choice == 4)
+	{
+	    cout << "You go south onto the street." << endl;
+	    goto street10;
+	}
+	if (parkinglot2_choice == 5)
+	{
+	    if (has_gps == false)
+	    {
+	        cout << "You find a GPS inside of an unlocked car. How irresponsible." << endl;
+	        has_gps == true;
+	        goto parkinglot2;
+	    }
+	    if (has_gps == true)
+	    {
+	        cout << "You have stolen the GPS already..." << endl;
+	        goto parkinglot2;
+	    }
+	}
+	if (parkinglot2_choice < 1 || parkinglot2_choice > 5)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto parkinglot2;
+	}
+	
+    //Street 10
+    street10:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) Southern Window" << endl;
+	
+	cin >> street10_choice;
+	
+	if (street10_choice == 1)
+	{
+	    cout << "You go west on the street." << endl;
+	    goto street8;
+	}
+	if (street10_choice == 2)
+	{
+	    cout << "You go north into a parking lot." << endl;
+	    goto parkinglot2;
+	}
+	if (street10_choice == 3)
+	{
+	    cout << "You go east on the street." << endl;
+	    goto street11;
+	}
+	if (street10_choice == 4)
+	{
+	    cout << "You see a hallway leading to a stairwell." << endl;
+	    goto street10;
+	}
+	if (street10_choice < 1 || street10_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto street10;
+	}
+    //North Hallway
+    northhallway:
+    cout << "(1) Western Door" << endl;
+	cout << "(2) Eastern Door" << endl;
+	cout << "(3) Southern Stairs" << endl;
+	
+	cin >> northhallway_choice;
+	
+	if (northhallway_choice == 1)
+	{
+	    cout << "You go through the western door into a classroom." << endl;
+	    goto classroom;
+	}
+	if (northhallway_choice == 2)
+	{
+	    cout << "You go through the eastern door into a storage room." << endl;
+	    goto storageroom2;
+	}
+	if (northhallway_choice == 3)
+	{
+	    cout << "You take the southern stairs up to a research room." << endl;
+	    goto researchroom;
+	}
+	if (northhallway_choice < 1 || northhallway_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto northhallway;
+	}
+	
+	
+    //Research Room
+    researchroom:
+    cout << "(1) Research Table" << endl;
+	cout << "(2) Northern Stairs" << endl;
+	cout << "(3) Corpse" << endl;
+	cout << "(4) Southern Stairwell" << endl;
+	cout << "(5) Elevator" << endl;
+	
+	cin >> researchroom_choice;
+	
+	if (researchroom_choice == 1)
+	{
+	    if (has_code_note == false)
+	    {
+	        cout << "You find a note with a random number on it:" << randomcode << endl;
+	        has_code_note == true;
+	        goto researchroom;
+	    }
+	    if (has_code_note == true)
+	    {
+	        cout << "The note has been taken already. Better keep moving." << endl;
+	        goto researchroom;
+	    }
+	}
+	if (researchroom_choice == 2)
+	{
+	    cout << "You go down the northern stairs into the hallway." << endl;
+	    goto northhallway;
+	}
+	if (researchroom_choice == 3)
+	{
+	    cout << "Oh nice.There's a corpse that has been lying on a table for who knows how long." << endl;
+	    goto researchroom;
+	}
+	if (researchroom_choice == 4)
+	{
+	    cout << "You find a key in a nearby drawer and unlock the door on the way through." << endl;
+	    has_research_key = true;
+	    goto office;
+	}
+	if (researchroom_choice == 5)
+	{
+	    if (generator_on == false)
+	    {
+	        cout << "You try to call the elevator, but the power outtage politely declines." << endl;
+	        goto researchroom;
+	    }
+	    if (generator_on == true)
+	    {
+	        cout << "You call the elevator and take it to the lobby." << endl;
+	        goto lobby;
+	    }
+	}
+	if (researchroom_choice < 1 || researchroom_choice > 5)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto researchroom;
+	}
+	
+    //Office
+    office:
+    cout << "(1) Northern Stairwell" << endl;
+	cout << "(2) Southern Door" << endl;
+    
+    cin >> office_choice;
+    
+    if (office_choice == 1)
+    {
+        if (has_research_key == false)
+        {
+            cout << "The door is locked. You need to find another way around." << endl;
+            goto office;
+        }
+        if (has_research_key == true)
+        {
+            cout << "You unlock the door and go up the stairs into the research room." << endl;
+            goto researchroom;
+        }
+    }
+    if (office_choice == 2)
+    {
+        cout << "You go through the southern door into the lobby." << endl;
+        goto lobby;
+    }
+    if (office_choice < 1 || office_choice > 2)
+    {
+        cout << "Invalid Selection." << endl;
+        goto office;
+    }
+	
+    //Lobby
+    lobby:
+    cout << "(1) West" << endl;
+	cout << "(2) Elevator" << endl;
+	cout << "(3) Northern Door" << endl;
+	cout << "(4) Eastern Door" << endl;
+	cout << "(5) Exit" << endl;
+	
+	cin >> lobby_choice;
+	
+	if (lobby_choice == 1)
+	{
+	    cout << "You go west into a bathroom." << endl;
+	    goto bathroom;
+	}
+	if (lobby_choice == 2)
+	{
+	    if (generator_on == false)
+	    {
+	        cout << "You try to call the elevator, but the power outtage politely declines." << endl;
+	        goto lobby;
+	    }
+	    if (generator_on == true)
+	    {
+	        cout << "You call the elevator and take it up to the research room." << endl;
+	        goto researchroom;
+	    }
+	}
+	if (lobby_choice == 3)
+	{
+	    cout << "You go through the northern door to an office." << endl;
+	    goto office;
+	}
+	if (lobby_choice == 4)
+	{
+	    cout << "You go through the eastern door into a boiler room." << endl;
+	    goto boilerroom;
+	}
+	if (lobby_choice == 5)
+	{
+	    cout << "You go through the southern exit out to the building front." << endl;
+	    goto buildingfront;
+	}
+	if (lobby_choice < 1 || lobby_choice > 5)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto lobby;
+	}
+	
+    //Building Front
+    buildingfront:
+    cout << "(1) West" << endl;
+	cout << "(2) Welcome Sign" << endl;
+	cout << "(3) Northern Entrance" << endl;
+	cout << "(4) East" << endl;
+	cout << "(5) South" << endl;
+	
+	cin >> buildingfront_choice;
+	
+	if (buildingfront_choice == 1)
+	{
+	    cout << "You go west onto the street." << endl;
+	    goto street9;
+	}
+	if (buildingfront_choice == 2)
+	{
+	    cout << "Welcome to Testron Industries, the leading innovator in brain function studies!" << endl;
+	    goto buildingfront;
+	}
+	if (buildingfront_choice == 3)
+	{
+	    if (has_flashlight == false)
+	    {
+	        cout << "It is too dark to navigate this right now." << endl;
+	        goto buildingfront;
+	    }
+	    if (has_flashlight == true)
+	    {
+	        cout << "It is very dark! You turn on your flashlight and venture on." << endl;
+	        goto lobby;
+	    }
+	}
+	if (buildingfront_choice == 4)
+	{
+	    cout << "You go east onto the street." << endl;
+	    goto street12;
+	}
+	if (buildingfront_choice == 5)
+	{
+	    cout << "You go south onto the sidewalk." << endl;
+	    goto sidewalk12;
+	}
+	if (buildingfront_choice < 1 || buildingfront_choice > 5)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto buildingfront;
+	}
+	
+    //Sidewalk 12
+    sidewalk12:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> sidewalk12_choice;
+	
+	if (sidewalk12_choice == 1)
+	{
+	    cout << "You go west on the sidewalk." << endl;
+	    goto sidewalk8;
+	}
+	if (sidewalk12_choice == 2)
+	{
+	    cout << "You go north to a building front." << endl;
+	    goto buildingfront;
+	}
+	if (sidewalk12_choice == 3)
+	{
+	    cout << "You go east on the sidewalk." << endl;
+	    goto sidewalk15;
+	}
+	if (sidewalk12_choice == 4)
+	{
+	    cout << "You go south on the sidewalk." << endl;
+	    goto sidewalk13;
+	}
+	if (sidewalk12_choice < 1 || sidewalk12_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk12;
+	}
+	
+    //Sidewalk 13
+    sidewalk13:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) Southern Entrance" << endl;
+	
+	cin >> sidewalk13_choice;
+	
+	if (sidewalk13_choice == 1)
+	{
+	    cout << "You go west on the sidewalk." << endl;
+	    goto sidewalk9;
+	}
+	if (sidewalk13_choice == 2)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk12;
+	}
+	if (sidewalk13_choice == 3)
+	{
+	    cout << "You go east on the sidewalk." << endl;
+	    goto sidewalk16;
+	}
+	if (sidewalk13_choice == 4)
+	{
+	    cout << "You go through the southern entrance into the Sporting Goods store." << endl;
+	    goto sportinggoods;
+	}
+	if (sidewalk13_choice < 1 || sidewalk13_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk13;
+	}
+    //Sporting Goods
+    sportinggoods:
+    cout << "(1) Sports Equipment" << endl;
+	cout << "(2) Northern Exit" << endl;
+	cout << "(3) Southern Door" << endl;
+	
+	cin >> sportinggoods_choice;
+	
+	if (sportinggoods_choice == 1)
+	{
+	    if (has_bat == false)
+	    {
+	        cout << "There is a large assortment of sports equipment. You pick up a baseball bat." << endl;
+	        has_bat == true;
+	        goto sportinggoods;
+	    }
+	    if (has_bat = true)
+	    {
+	        cout << "You don't find anything else that would be useful." << endl;
+	        goto sportinggoods;
+	    }
+	    
+	}
+	if (sportinggoods_choice == 2)
+	{
+	    cout << "You exit north onto the sidewalk." << endl;
+	    goto sidewalk13;
+	}
+	if (sportinggoods_choice == 3)
+	{
+	    cout << "You go through the southern door into a shoe area." << endl;
+	    goto shoearea;
+	    
+	}
+	if (sportinggoods_choice < 1 || sportinggoods_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sportinggoods;
+	}
+	
+    //Shoe Area
+    shoearea:
+    cout << "(1) Shoe Rack" << endl;
+	cout << "(2) Northern Door" << endl;
+	cout << "(3) Locker" << endl;
+	cout << "(4) Boot Rack" << endl;
+	
+	cin >> shoearea_choice;
+	
+	if (shoearea_choice == 1)
+	{
+	    cout << "There are some nice shoes for various sports, but they serve no use to you." << endl;
+	    goto shoearea;
+	}
+	if (shoearea_choice == 2)
+	{
+	    cout << "You go through the northern door into the Sporting Goods store." << endl;
+	    goto sportinggoods;
+	}
+	if (shoearea_choice == 3)
+	{
+	    cout << "I would give you money if you were able to guess this combination." << endl;
+	    int combination1{01};
+	    int combination2{23};
+	    int combination3{41};
+	    cout << "Enter the first number (01-49)" << endl;
+	    cin >> combination1;
+	    cout << "Enter the second number (01-49)" << endl;
+	    cin >> combination2;
+	    cout << "Enter the third number (01-49)" << endl;
+	    cin >> combination3;
+	    if (combination1 == 01 && combination2 == 23 && combination3 == 41)
+	    {
+	        cout << "The odds of you actually getting that right ~1 in 64,000" << endl;
+	        goto shoearea;
+	    }
+	    if (combination1 != 01 || combination2 != 23 || combination3 != 41)
+	    {
+	        cout << "I promise there is a correct combination." << endl;
+	        goto shoearea;
+	    }
+	    
+	    
+	}
+	if (shoearea_choice == 4)
+	{
+	    if (has_boots == false)
+	    {
+	        cout << "You find some heavy duty boots and slip them on." << endl;
+	        has_boots == true;
+	        goto shoearea;
+	    }
+	    if (has_boots == true)
+	    {
+	        cout << "With these new boots you should be able to walk anywhere." << endl;
+	        goto shoearea;
+	    }
+	    
+	}
+	if (shoearea_choice < 1 || shoearea_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto shoearea;
+	}
+    //Sidewalk 14
+    sidewalk14:
+    cout << "(1) West" << endl;
+	cout << "(2) East" << endl;
+	cout << "(3) Southern Entrance" << endl;
+	
+	cin >> sidewalk14_choice;
+	
+	if (sidewalk14_choice == 1)
+	{
+	    cout << "You go west on the sidewalk." << endl;
+	    goto sidewalk11;
+	}
+	if (sidewalk14_choice == 2)
+	{
+	    cout << "You go east on the sidewalk." << endl;
+	    goto sidewalk19;
+	}
+	if (sidewalk14_choice == 3)
+	{
+	    cout << "You go through the southern entrance into a kitchen." << endl;
+	    goto kitchen;
+	}
+	if (sidewalk14_choice < 1 || sidewalk14_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk14;
+	}
+	
+    //Kitchen
+    kitchen:
+    cout << "(1) Chopping Table" << endl;
+	cout << "(2) Northern Exit" << endl;
+	cout << "(3) Cabinet" << endl;
+	cout << "(4) Southern Door" << endl;
+	cout << "(5) Fridge" << endl;
+	
+	cin >> kitchen_choice;
+	
+	if (kitchen_choice == 1)
+	{
+	    if (has_butcher_knife == false)
+	    {
+	        cout << "You find a shiny new butcher's knife." << endl;
+	        has_butcher_knife == true;
+	        goto kitchen;
+	    }
+	    if (has_butcher_knife == true)
+	    {
+	        cout << "They don't hand out all you can handle butcher's knives you know." << endl;
+	        goto kitchen;
+	    }
+	}
+	if (kitchen_choice == 2)
+	{
+	    cout << "You take the northern exit out to the sidewalk." << endl;
+	    goto sidewalk14;
+	}
+	if (kitchen_choice == 3)
+	{
+	    if (has_posion == false)
+	    {
+	        cout << "Hmm. Not sure why poison is in the kitchen. You take the poison." << endl;
+	        has_posion == true;
+	        goto kitchen;
+	    }
+	    if (has_posion == true)
+	    {
+	        cout << "Unless you have a nasty rat infestation, I wouldn't take anymore poison." << endl;
+	        goto kitchen;
+	    }
+	}
+	if (kitchen_choice == 4)
+	{
+	    cout << "You go through the southern door into the restaurant." << endl;
+	    goto restaurant;
+	}
+	if (kitchen_choice == 5)
+	{
+	    if (has_meat = false)
+	    {
+	        cout << "Mmm, some meat! It is a little cold. You take it anyway." << endl;
+	        has_meat == true;
+	        goto kitchen;
+	    }
+	    if (has_meat == true)
+	    {
+	        cout << "The meat has already been taken." << endl;
+	        goto kitchen;
+	    }
+	}
+	if (kitchen_choice < 1 || kitchen_choice > 5)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto kitchen;
+	}
+	
+    //Restaurant
+    restaurant:
+    cout << "(1) Western Exit" << endl;
+	cout << "(2) Northern Door" << endl;
+	cout << "(3) Southern Exit" << endl;
+	
+	cin >> restaurant_choice;
+	
+	if (restaurant_choice == 1)
+	{
+	    cout << "You take the western exit out to a parking lot." << endl;
+	    goto parkinglot2;
+	}
+	if (restaurant_choice == 2)
+	{
+	    cout << "You go through the northern door into the kitchen." << endl;
+	    goto kitchen;
+	}
+	if (restaurant_choice == 3)
+	{
+	    cout << "You take the southern exit out to the street." << endl;
+	    goto street11;
+	}
+	if (restaurant_choice < 1 || restaurant_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto restaurant;
+	}
+	
+    //Street 11
+    street11:
+    cout << "(1) West" << endl;
+	cout << "(2) North Entrance" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) Southern Entrance" << endl;
+	
+	cin >> street11_choice;
+	
+	if (street11_choice == 1)
+	{
+	    cout << "You go west on the street." << endl;
+	    goto street10;
+	}
+	if (street11_choice == 2)
+	{
+	    cout << "You go through the northern entrance into a restaurant." << endl;
+	    goto restaurant;
+	}
+	if (street11_choice == 3)
+	{
+	    cout << "You go east on the street." << endl;
+	    goto street13;
+	}
+	if (street11_choice == 4)
+	{
+	    cout << "You see a storage room with a ton of boxes in it." << endl;
+	    goto street11;
+	}
+	if (street11_choice < 1 || street11_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto street11;
+	}
+	
+    //Storage Room 2
+    storageroom2:
+    cout << "(1) Western Door" << endl;
+	cout << "(2) Storage Rack" << endl;
+	cout << "(3) Utility Closet" << endl;
+	cout << "(4) Southern Door" << endl;
+	
+	cin >> storageroom2_choice;
+	
+	if (storageroom2_choice == 1)
+	{
+	    cout << "You go through the western door into the hallway." << endl;
+	    goto northhallway;
+	}
+	if (storageroom2_choice == 2)
+	{
+	    cout << "You check the storage rack and find a notepad with the word, ""winston"" written on it. Hmm." << endl;
+	    goto storageroom2;
+	}
+	if (storageroom2_choice == 3)
+	{
+	    cout << "You find some brooms, dustpans, and other cleaning supplies." << endl;
+	    goto storageroom2;
+	}
+	if (storageroom2_choice == 4)
+	{
+	    cout << "You go through the southern door to a break room." << endl;
+	    goto breakroom;
+	}
+	if (storageroom2_choice < 1 || storageroom2_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto storageroom2;
+	}
+    //Break Room
+    breakroom:
+    cout << "(1) Duffle Bag" << endl;
+	cout << "(2) Northern Door" << endl;
+	cout << "(3) Southern Stairs" << endl;
+	
+	cin >> breakroom_choice;
+	
+	if (breakroom_choice == 1)
+	{
+	    if (has_green_card == false)
+	    {
+	        cout << "You dig through the duffle bag and find a green keycard." << endl;
+	        has_green_card == true;
+	        goto breakroom;
+	    }
+	    if (has_green_card == true)
+	    {
+	        cout << "You've stolen enough today haven't you?" << endl;
+	        goto breakroom;
+	    }
+	}
+	if (breakroom_choice == 2)
+	{
+	    cout << "You go through the northern door into a storage room." << endl;
+	    goto storageroom2;
+	}
+	if (breakroom_choice == 3)
+	{
+	    cout << "You go down the southern stairs into the basement." << endl;
+	    goto basement;
+	}
+	if (breakroom_choice < 1 || breakroom_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto breakroom;
+	}
+	
+    //Basement
+    basement:
+    cout << "(1) Northern Stairs" << endl;
+	cout << "(2) Southern Stairs" << endl;
+	
+	cin >> basement_choice;
+	
+	if (basement_choice == 1)
+	{
+	    cout << "You go up the northern stairs to a break room." << endl;
+	    goto breakroom;
+	}
+	if (basement_choice == 2)
+	{
+	    cout << "You go up the southern stairs to a boiler room." << endl;
+	    goto boilerroom;
+	}
+	if (basement_choice < 1 || basement_choice > 2)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto basement;
+	}
+	
+    //Boiler Room
+    boilerroom:
+    cout << "(1) Western Door" << endl;
+	cout << "(2) Northern Stairs" << endl;
+	cout << "(3) Generator" << endl;
+	
+	cin >> boilerroom_choice;
+	
+	if (boilerroom_choice == 1)
+	{
+	    cout << "You go through the western door to the lobby." << endl;
+	    goto lobby;
+	}
+	if (boilerroom_choice == 2)
+	{
+	    cout << "You go down the northern stairs to the basement." << endl;
+	    goto basement;
+	}
+	if (boilerroom_choice == 3)
+	{
+	    if (player_intelligence > 4)
+	    {
+	        cout << "You and your big brain figure out how to turn on the generator, activating power in the facility." << endl;
+	        generator_on == true;
+	        goto boilerroom;
+	    }
+	    if (player_intelligence < 5)
+	    {
+	        cout << "You better not mess with this if you know what's good for you." << endl;
+	        goto boilerroom;
+	    }
+	}
+	if (boilerroom_choice < 1 || boilerroom_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto boilerroom;
+	}
+	
+    //Street 12
+    street12:
+    cout << "(1) West" << endl;
+	cout << "(2) Northern Window" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> street12_choice;
+	
+	if (street12_choice == 1)
+	{
+	    cout << "You go west to a building front." << endl;
+	    goto buildingfront;
+	}
+	if (street12_choice == 2)
+	{
+	    cout << "You see a bunch of mechanical machines." << endl;
+	    goto street12;
+	}
+	if (street12_choice == 3)
+	{
+	    cout << "You go east on the street." << endl;
+	    goto street18;
+	}
+	if (street12_choice == 4)
+	{
+	    cout << "You go south onto a sidewalk." << endl;
+	    goto sidewalk15;
+	}
+	if (street12_choice < 1 || street12_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto street12;
+	}
+	
+    //Sidewalk 15
+    sidewalk15:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> sidewalk15_choice;
+	
+	if (sidewalk15_choice == 1)
+	{
+	    cout << "You go west on the sidewalk." << endl;
+	    goto sidewalk12;
+	}
+	if (sidewalk15_choice == 2)
+	{
+	    cout << "You go north onto a street." << endl;
+	    goto street12;
+	}
+	if (sidewalk15_choice == 3)
+	{
+	    cout << "You go east on the sidewalk." << endl;
+	    goto sidewalk22;
+	}
+	if (sidewalk15_choice == 4)
+	{
+	    cout << "You go south on the sidewalk." << endl;
+	    goto sidewalk16;
+	}
+	if (sidewalk15_choice < 1 || sidewalk15_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk15;
+	}
+    //Sidewalk 16
+    sidewalk16:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) South" << endl;
+	
+	cin >> sidewalk16_choice;
+	
+	if (sidewalk16_choice == 1)
+	{
+	    cout << "You go west on the sidewalk." << endl;
+	    goto sidewalk13;
+	}
+	if (sidewalk16_choice == 2)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk15;
+	}
+	if (sidewalk16_choice == 3)
+	{
+	    cout << "You go south on the sidewalk." << endl;
+	    goto sidewalk17;
+	}
+	if (sidewalk16_choice < 1 || sidewalk16_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk16;
+	}
+	
+    //Sidewalk 17
+    sidewalk17:
+    cout << "(1) Western Window" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) South" << endl;
+	
+	cin >> sidewalk17_choice;
+	
+	if (sidewalk17_choice == 1)
+	{
+	    cout << "You see some sporting goods!" << endl;
+	    goto sidewalk17;
+	}
+	if (sidewalk17_choice == 2)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk16;
+	}
+	if (sidewalk17_choice == 3)
+	{
+	    cout << "You go south on the sidewalk." << endl;
+	    goto sidewalk18;
+	}
+	if (sidewalk17_choice < 1 || sidewalk17_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk17;
+	}
+	
+    //Sidewalk 18
+    sidewalk18:
+    cout << "(1) North" << endl;
+	cout << "(2) Eastern Barbed-Wire Fence" << endl;
+	
+	cin >> sidewalk18_choice;
+	
+	if (sidewalk18_choice == 1)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk17;
+	}
+	if (sidewalk18_choice == 2)
+	{
+	    cout << "On the other side is a sewer entrance." << endl;
+	    goto sidewalk18;
+	}
+	if (sidewalk18_choice < 1 || sidewalk18_choice > 2)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk18;
+	}
+	
+    //Sidewalk 19
+    sidewalk19:
+    cout << "(1) West" << endl;
+	cout << "(2) Eastern Fence" << endl;
+	cout << "(3) South" << endl;
+	
+	cin >> sidewalk19_choice;
+	
+	if (sidewalk19_choice == 1)
+	{
+	    cout << "You go west on the sidewalk." << endl;
+	    goto sidewalk14;
+	}
+	if (sidewalk19_choice == 2)
+	{
+	    cout << "There appears to be an entrance to a sewer on the other side." << endl;
+	    goto sidewalk19;
+	}
+	if (sidewalk19_choice == 3)
+	{
+	    cout << "You go south on the sidewalk." << endl;
+	    goto sidewalk20;
+	}
+	if (sidewalk19_choice < 1 || sidewalk19_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk19;
+	}
+	
+    //Sidewalk 20
+    sidewalk20:
+    cout << "(1) Western Window" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> sidewalk20_choice;
+	
+	if (sidewalk20_choice == 1)
+	{
+	    cout << "You see a dirty and unsanitary looking kitchen." << endl;
+	    goto sidewalk20;
+	}
+	if (sidewalk20_choice == 2)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk19;
+	}
+	if (sidewalk20_choice == 3)
+	{
+	    cout << "You go east on the sidewalk." << endl;
+	    goto sidewalk23;
+	}
+	if (sidewalk20_choice == 4)
+	{
+	    cout << "You go south on the sidewalk." << endl;
+	    goto sidewalk21;
+	}
+	if (sidewalk20_choice < 1 || sidewalk20_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk20;
+	}
+	
+    //Sidewalk 21
+    sidewalk21:
+    cout << "(1) Western Window" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> sidewalk21_choice;
+	
+	if (sidewalk21_choice == 1)
+	{
+	    cout << "You see a restaurant on the inside." << endl;
+	    goto sidewalk21;
+	}
+	if (sidewalk21_choice == 2)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk20;
+	}
+	if (sidewalk21_choice == 3)
+	{
+	    cout << "You go east on the sidewalk." << endl;
+	    goto sidewalk24;
+	}
+	if (sidewalk21_choice == 4)
+	{
+	    cout << "You go south onto a street." << endl;
+	    goto street13;
+	}
+	if (sidewalk21_choice < 1 || sidewalk21_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk21;
+	}
+	
+    //Street 13
+    street13:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> street13_choice;
+	
+	if (street13_choice == 1)
+	{
+	    cout << "You go west on the street." << endl;
+	    goto street11;
+	}
+	if (street13_choice == 2)
+	{
+	    cout << "You go north onto a sidewalk." << endl;
+	    goto sidewalk21;
+	}
+	if (street13_choice == 3)
+	{
+	    cout << "You go east onto a sidewalk." << endl;
+	    goto sidewalk25;
+	}
+	if (street13_choice == 4)
+	{
+	    cout << "You go south on the street." << endl;
+	    goto street14;
+	}
+	if (street13_choice < 1 || street13_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto street13;
+	}
+	
+    //Street 14
+    street14:
+    cout << "(1) Western Window" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) Eastern Window" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> street14_choice;
+	
+	if (street14_choice == 1)
+	{
+	    cout << "You see a storage room with a bunch of boxes in it." << endl;
+	    goto street14;
+	}
+	if (street14_choice == 2)
+	{
+	    cout << "You go north on the street." << endl;
+	    goto street13;
+	}
+	if (street14_choice == 3)
+	{
+	    cout << "The window is barred up to prevent break-ins." << endl;
+	    goto street14;
+	}
+	if (street14_choice == 4)
+	{
+	    cout << "You go south on the street." << endl;
+	    goto street15;
+	}
+	if (street14_choice < 1 || street14_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto street14;
+	}
+	
+    //Street 15
+    street15:
+    cout << "(1) Western Window" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) Eastern Entrance" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> street15_choice;
+	
+	if (street15_choice == 1)
+	{
+	    cout << "You see what looks like a break room." << endl;
+	    goto street15;
+	}
+	if (street15_choice == 2)
+	{
+	    cout << "You go north on the street." << endl;
+	    goto street14;
+	}
+	if (street15_choice == 3)
+	{
+	    cout << "You go through the eastern entrance to an armory." << endl;
+	    goto armory;
+	}
+	if (street15_choice == 4)
+	{
+	    cout << "You go south on the street." << endl;
+	    goto street16;
+	}
+	if (street15_choice < 1 || street15_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto street15;
+	}
+	
+    //Street 16
+    street16:
+    cout << "(1) Western Window" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) Eastern Window" << endl;
+	cout << "(4) South" << endl;
+	
+	 cin >> street16_choice;
+	 
+	 if (street16_choice == 1)
+	 {
+	     cout << "You see a stairwell." << endl;
+	     goto street16;
+	 }
+	 if (street16_choice == 2)
+	 {
+	     cout << "You go north on the street." << endl;
+	     goto street15;
+	 }
+	 if (street16_choice == 3)
+	 {
+	     cout << "The window is barred up to prevent break-ins." << endl;
+	     goto street16;
+	 }
+	 if (street16_choice == 4)
+	 {
+	     cout << "You go south on the street." << endl;
+	     goto street17;
+	 }
+	 if (street16_choice < 1 || street16_choice > 4)
+	 {
+	     cout << "Invalid Selection." << endl;
+	     goto street16;
+	 }
+	 
+    //Street 17
+    street17:
+    cout << "(1) Western Window" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> street17_choice;
+	
+	if (street17_choice == 1)
+	{
+	    cout << "You see a bunch of mechanical machines." << endl;
+	    goto street17;
+	}
+	if (street17_choice == 2)
+	{
+	    cout << "You go north on the street." << endl;
+	    goto street16;
+	}
+	if (street17_choice == 3)
+	{
+	    cout << "You go east onto the sidewalk." << endl;
+	    goto sidewalk26;
+	}
+	if (street17_choice == 4)
+	{
+	    cout << "You go south on the street." << endl;
+	    goto street18;
+	}
+	if (street17_choice < 1 || street17_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto street17;
+	}
+	
+    //Street 18
+    street18:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) South" << endl;
+	
+	cin >> street18_choice;
+	
+	if (street18_choice == 1)
+	{
+	    cout << "You go west on the street." << endl;
+	    goto street12;
+	}
+	if (street18_choice == 2)
+	{
+	    cout << "You go north on the street." << endl;
+	    goto street17;
+	}
+	if (street18_choice == 3)
+	{
+	    cout << "You go east onto a sidewalk." << endl;
+	    goto sidewalk27;
+	}
+	if (street18_choice == 4)
+	{
+	    cout << "You go south onto a sidewalk." << endl;
+	    goto sidewalk22;
+	}
+	if (street18_choice < 1 || street18_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto street18;
+	}
+    //Sidewalk 22
+    sidewalk22:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) East" << endl;
+	cout << "(4) Southern Entrance" << endl;
+	
+	cin >> sidewalk22_choice;
+	
+	if (sidewalk22_choice == 1)
+	{
+	    cout << "You go west on the sidewalk." << endl;
+	    goto sidewalk15;
+	}
+	if (sidewalk22_choice == 2)
+	{
+	    cout << "You go north onto a street." << endl;
+	    goto street18;
+	}
+	if (sidewalk22_choice == 3)
+	{
+	    cout << "You go east on the sidewalk." << endl;
+	    goto sidewalk28;
+	}
+	if (sidewalk22_choice == 4)
+	{
+	    cout << "You go through the southern entrance to a front desk area." << endl;
+	    goto frontdesk;
+	}
+	if (sidewalk22_choice < 1 || sidewalk22_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk22;
+	}
+    //Front Desk
+    frontdesk:
+    cout << "(1) Northern Exit" << endl;
+	cout << "(2) Southern Door" << endl;
+	
+	cin >> frontdesk_choice;
+	
+	if (frontdesk_choice == 1)
+	{
+	    cout << "You go through the northern exit out onto a sidewalk." << endl;
+	    goto sidewalk22;
+	}
+	if (frontdesk_choice == 2)
+	{
+	    cout << "You go through the southern door into a power plant." << endl;
+	    goto powerplant;
+	}
+	if (frontdesk_choice < 1 || frontdesk_choice > 2)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto frontdesk;
+	}
+	
+    //Power Plant
+    powerplant:
+    cout << "(1) Table" << endl;
+	cout << "(2) Northern Door" << endl;
+	cout << "(3) Southern Gate" << endl;
+
+    cin >> powerplant_choice;
+    
+    if (powerplant_choice == 1)
+    {
+        if (has_red_card == false)
+        {
+            cout << "You pick up a red key card from the table." << endl;
+            has_red_card == true;
+            goto powerplant;
+        }
+        if (has_red_card == true)
+        {
+            cout << "You have already found the red key card." << endl;
+            goto powerplant;
+        }
+    }
+    if (powerplant_choice == 2)
+    {
+        cout << "You go through the northern door to the front desk area." << endl;
+        goto frontdesk;
+    }
+    if (powerplant_choice == 3)
+    {
+        if (has_sewer_key == false)
+        {
+            cout << "The gate to the sewer is locked." << endl;
+            goto powerplant;
+        }
+        if (has_sewer_key == true)
+        {
+            cout << "You unlock the gate and go to the Southeast Sewer." << endl;
+            goto sesewer;
+        }
+    }
+    if (powerplant_choice < 1 || powerplant_choice > 3)
+    {
+        cout << "Invalid Selection." << endl;
+        goto powerplant;
+    }
+	
+    //Southeast Sewer
+    sesewer:
+    cout << "(1) Southwest Sewer" << endl;
+	cout << "(2) Northern Gate" << endl;
+	cout << "(3) Northeast Sewer" << endl;
+	cout << "(4) Eastern Barbed-Wire Fence" << endl;
+	
+	cin >> sesewer_choice;
+	
+	if (sesewer_choice == 1)
+	{
+	    if (has_flashlight == false)
+	    {
+	        cout << "It is too dark to navigate this right now." << endl;
+	        goto sesewer;
+	    }
+	    if (has_flashlight == true)
+	    {
+	        cout << "It is very dark! You turn on your flashlight and venture on." << endl;
+	        goto swsewer;
+	    }
+	}
+	if (sesewer_choice == 2)
+	{
+	    if (has_sewer_key == false)
+	    {
+	        cout << "The gate is locked." << endl;
+	        goto sesewer;
+	    }
+	    if (has_sewer_key == true)
+	    {
+	        cout << "You unlock the gate and go into the Power Plant." << endl;
+	        goto powerplant;
+	    }
+	}
+	if (sesewer_choice == 3)
+	{
+	    if (has_flashlight == false)
+	    {
+	        cout << "It is too dark to navigate this right now." << endl;
+	        goto sesewer;
+	    }
+	    if (has_flashlight == true)
+	    {
+	        cout << "It is very dark! You turn on your flashlight and venture on." << endl;
+	        goto nesewer;
+	    }
+	}
+	if (sesewer_choice == 4)
+	{
+	    cout << "Ther is a dock with some boats that appear to be functioning. This could be your escape! Find a way in." << endl; << endl;
+	    goto sesewer;
+	}
+	if (sesewer_choice < 1 || sesewer_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sesewer;
+	}
+	
+    //Northeast Sewer
+    nesewer:
+    cout << "(1) Northwest Sewer" << endl;
+	cout << "(2) Southeast Sewer" << endl;
+	cout << "(3) Southern Gate" << endl;
+    
+	cin >> nesewer_choice;
+	
+	if (nesewer_choice == 1)
+	{
+	    if (has_flashlight == false)
+	    {
+	        cout << "It is too dark to navigate this right now." << endl;
+	        goto nesewer;
+	    }
+	    if (has_flashlight == true)
+	    {
+	        cout << "It is very dark! You turn on your flashlight and venture on." << endl;
+	        goto nwsewer;
+	    }
+	}
+	if (nesewer_choice == 2)
+	{
+	    if (has_flashlight == false)
+	    {
+	        cout << "It is too dark to navigate this right now." << endl;
+	        goto nesewer;
+	    }
+	    if (has_flashlight == true)
+	    {
+	        cout << "It is very dark! You turn on your flashlight and venture on." << endl;
+	        goto sesewer;
+	    }
+	}
+	if (nesewer_choice == 3)
+	{
+	    cout << "The gate is open just enough to squeeze through..." << endl;
+	    goto sidewalk23;
+	}
+	if (nesewer_choice < 1 || nesewer_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto nesewer;
+	}
+	
+    //Sidewalk 23
+    sidewalk23:
+    cout << "(1) West" << endl;
+	cout << "(2) Northern Gate" << endl;
+	cout << "(3) South" << endl;
+	
+	cin >> sidewalk23_choice;
+	
+	if (sidewalk23_choice == 1)
+	{
+	    cout << "You go west on the sidewalk." << endl;
+	    goto sidewalk20;
+	}
+	if (sidewalk23_choice == 2)
+	{
+	    cout << "The gate is open just enough to squeeze through..." << endl;
+	    goto nesewer;
+	}
+	if (sidewalk23_choice == 3)
+	{
+	    cout << "You go south on the sidewalk." << endl;
+	    goto sidewalk24;
+	}
+	if (sidewalk23_choice < 1 || sidewalk23_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk23;
+	}
+	
+    //Sidewalk 24
+    sidewalk24:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) South" << endl;
+	
+	cin >> sidewalk24_choice;
+	
+	if (sidewalk24_choice == 1)
+	{
+	    cout << "You go west on the sidewalk." << endl;
+	    goto sidewalk21;
+	}
+	if (sidewalk24_choice == 2)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk23;
+	}
+	if (sidewalk24_choice == 3)
+	{
+	    cout << "You go south on the sidewalk." << endl;
+	    goto sidewalk25;
+	}
+	if (sidewalk24_choice < 1 || sidewalk24_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk24;
+	}
+	
+    //Sidewalk 25
+    sidewalk25:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) Southern Window" << endl;
+	
+	cin >> sidewalk25_choice;
+	
+	if (sidewalk25_choice == 1)
+	{
+	    cout << "You go west onto a street." << endl;
+	    goto street13;
+	}
+	if (sidewalk25_choice == 2)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk24;
+	}
+	if (sidewalk25_choice == 3)
+	{
+	    cout << "The window is barred up to prevent break-ins." << endl;
+	    goto sidewalk25;
+	}
+	if (sidewalk25_choice < 1 || sidewalk25_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk25;
+	}
+	
+    //Guns
+    guns:
+    cout << "(1) Revolver" << endl;
+	cout << "(2) Shotgun" << endl;
+	cout << "(3) Assault Rifle" << endl;
+	cout << "(4) Southern Metal Door" << endl;
+	cout << "You can take one of the three weapons in this room. You cannot swap them." << endl;
+	cin >> guns_choice;
+	
+	if (guns_choice == 1)
+	{
+	    if (has_revolver == false && has_shotgun == false && has_ar == false)
+	    {
+	        cout << "Would you like to take the revolver? (y/n)" << endl;
+	        char revolver_choice;
+	        cin >> revolver_choice;
+	        if (revolver_choice == 'y' || revolver_choice == 'Y')
+	        {
+	            cout << "You take the revolver." << endl;
+	            has_revolver == true;
+	            goto guns;
+	        }
+	        if (revolver_choice != 'y' || revolver_choice != 'Y')
+	        {
+	            cout << "You decide not to take the revolver." << endl;
+	            goto guns;
+	        }
+	    }
+	    if (has_revolver == true || has_shotgun == true || has_ar == true)
+	    {
+	        cout << "You have already taken a weapon." << endl;
+	        goto guns;
+	    }
+	}
+	if (guns_choice == 2)
+	{
+	    if (has_revolver == false && has_shotgun == false && has_ar == false)
+	    {
+	        cout << "You can take one of the three weapons in this room. You cannot swap them." << endl;
+	        cout << "Would you like to take the shotgun? (y/n)" << endl;
+	        char shotgun_choice;
+	        cin >> shotgun_choice;
+	        if (shotgun_choice == 'y' || shotgun_choice == 'Y')
+	        {
+	            cout << "You take the shotgun." << endl;
+	            has_shotgun == true;
+	            goto guns;
+	        }
+	        if (shotgun_choice != 'y' || shotgun_choice != 'Y')
+	        {
+	            cout << "You decide not to take the shotgun." << endl;
+	            goto guns;
+	        }
+	    }
+	    if (has_revolver == true || has_shotgun == true || has_ar == true)
+	    {
+	        cout << "You have already taken a weapon." << endl;
+	        goto guns;
+	    }
+	}
+	if (guns_choice == 3)
+	{
+	    if (has_revolver == false && has_shotgun == false && has_ar == false)
+	    {
+	        cout << "You can take one of the three weapons in this room. You cannot swap them." << endl;
+	        cout << "Would you like to take the assault rifle? (y/n)" << endl;
+	        char ar_choice;
+	        cin >> ar_choice;
+	        if (ar_choice == 'y' || ar_choice == 'Y')
+	        {
+	            cout << "You take the assault rifle." << endl;
+	            has_ar == true;
+	            goto guns;
+	        }
+	        if (ar_choice != 'y' || ar_choice != 'Y')
+	        {
+	            cout << "You decide not to take the assault rifle." << endl;
+	            goto guns;
+	        }
+	    }
+	    if (has_revolver == true || has_shotgun == true || has_ar == true)
+	    {
+	        cout << "You have already taken a weapon." << endl;
+	        goto guns;
+	    }
+	}
+	if (guns_choice < 1 || guns_choice > 3)
+	{
+	    cout << "Invalid Selection.
+	    goto guns;
+	}
+	
+    //Armory
+    armory:
+    cout << "(1) Western Exit" << endl;
+	cout << "(2) Northern Metal Door" << endl;
+	cout << "(3) Desk" << endl;
+	cout << "(4) Southern Vault Entrance" << endl;
+	
+	cin >> armory_choice;
+	
+	if (armory_choice == 1)
+	{
+	    cout << "You take the western exit onto the street." << endl;
+	    goto street15;
+	}
+	if (armory_choice == 2)
+	{
+	    if (has_green_card == false)
+	    {
+	        cout << "There is a key card reader painted green." << endl;
+	        goto armory;
+	    }
+	    if (has_green_card == true)
+	    {
+	        cout << "You slide the green keycard and the door opens." << endl;
+	        goto guns;
+	    }
+	}
+	if (armory_choice == 3)
+	{
+	    if (player_intelligence > 4)
+	    {
+	        cout << "You pick the lock and find a combination on a note: 34-04-10" << endl;
+	        goto armory;
+	    }
+	    if (player_intelligence < 5)
+	    {
+	        cout << "You could probably open this if you were more intelligent." << endl;
+	        goto armory;
+	    }
+	}
+	if (armory_choice == 4)
+	{
+	    cout << "The vault requires a combination to be opened. Input the combination:" << endl;
+	    cout << "First Combination: ";
+	    int combo1{0};
+	    int combo2{0};
+	    int combo3{0};
+	    cin >> combo1;
+	    cout << endl;
+	    cout << "Second Combination: ";
+	    cin >> combo2;
+	    cout << endl;
+	    cout << "Third Combination: ";
+	    cin >> combo3;
+	    cout << endl;
+	    if (combo1 != 34 || combo2 != 04 || combo3 != 10)
+	    {
+	        cout << "Incorrect Combination." << endl;
+	        goto armory;
+	    }
+	    if (combo1 == 34 && combo2 == 04 && combo3 == 10)
+	    {
+	        cout << "A loud noise is heard as the vault door opens." << endl;
+	        goto vault;
+	    }
+	}
+	if (armory_choice < 1 || armory_choice > 4)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto armory;
+	}
+	
+    //Vault
+    vault:
+    cout << "(1) Large Backpack" << endl;
+	cout << "(2) Northern Vault Exit" << endl;
+	
+	cin >> vault_choice;
+	
+	if (vault_choice == 1)
+	{
+	    if (has_backpack2 == false)
+	    {
+	        cout << "You find a large backpack. You can now hold 20 items." << endl;
+	        has_backpack2 == true;
+	        if (has_backpack2 == true)
+	        {
+	            player_inventory_space == 20;
+	            goto vault;
+	        }
+	    }
+	    if (has_backpack2 == true)
+	    {
+	        cout << "You already have this backpack." << endl;
+	        goto vault;
+	    }
+	}
+	if (vault_choice == 2)
+	{
+	    cout << "You exit the vault into the armory." << endl;
+	    goto armory;
+	}
+	if (vault_choice < 1 || vault_choice >2)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto vault;
+	}
+	
+    //Sidewalk 26
+    sidewalk26:
+    cout << "(1) West" << endl;
+	cout << "(2) Northern Window" << endl;
+	cout << "(3) South" << endl;
+	
+	cin >> sidewalk26_choice;
+	
+	if (sidewalk26_choice == 1)
+	{
+	    cout << "You go west onto a street." << endl;
+	    goto street17;
+	}
+	if (sidewalk26_choice == 2)
+	{
+	    cout << "The window is barred up to prevent break-ins." << endl;
+	    goto sidewalk26;
+	}
+	if (sidewalk26_choice == 3)
+	{
+	    cout << "You go south on the sidewalk." << endl;
+	    goto sidewalk27;
+	}
+	if (sidewalk26_choice < 1 || sidewalk26_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk26;
+	}
+	
+    //Sidewalk 27
+    sidewalk27:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) South" << endl;
+	
+	cin >> sidewalk27_choice;
+	
+	if (sidewalk27_choice == 1)
+	{
+	    cout << "You go west onto a street." << endl;
+	    goto street18;
+	}
+	if (sidewalk27_choice == 2)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk27;
+	}
+	if (sidewalk27_choice == 3)
+	{
+	    cout << "You go south on the sidewalk." << endl;
+	    goto sidewalk28;
+	}
+	if (sidewalk27_choice < 1 || sidewalk27_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk27;
+	}
+	
+    //Sidewalk 28
+    sidewalk28:
+    cout << "(1) West" << endl;
+	cout << "(2) North" << endl;
+	cout << "(3) Southern Entrance" << endl;
+	
+	cin >> sidewalk28_choice;
+	
+	if (sidewalk28_choice == 1)
+	{
+	    cout << "You go west on the sidewalk." << endl;
+	    goto sidewalk22;
+	}
+	if (sidewalk28_choice == 2)
+	{
+	    cout << "You go north on the sidewalk." << endl;
+	    goto sidewalk27;
+	}
+	if (sidewalk28_choice == 3)
+	{
+	    if (dog_alive == true)
+	    {
+	        cout << "A viscious dog is barking at you and preventing your entrance to the Junkyard!" << endl;
+	    
+	        if (has_meat == true && has_posion == true)
+	        {
+	            cout << "You put some poison on the meat and feed it to the dog. Your soul screams as the dog's leaves it's body." << endl;
+	            dog_alive == false;
+	            goto junkyard;
+	        }
+	        if (has_meat == false || has_posion == false)
+	        {
+	            cout << "Unless you have some *cough cough* meat, and *cough cough* poison, I would recommend you turn back." << endl;
+	            goto sidewalk28;
+	        }
+	    }
+	    if (dog_alive == false)
+	    {
+	        goto junkyard;
+	    }
+	}
+	if (sidewalk28_choice < 1 || sidewalk28_choice > 3)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto sidewalk28;
+	}
+	
+    //Junk Yard:
+    junkyard:
+    cout << "(1) Northern Exit" << endl;
+	cout << "(2) Southern Gate" << endl;
+	
+	cin >> junkyard_choice;
+	
+	if (junkyard_choice == 1)
+	{
+	    cout << "You exit the Junkyard." << endl;
+	    goto sidewalk28;
+	}
+	if (junkyard_choice == 2)
+	{
+	    if (has_red_card == false)
+	    {
+	        cout << "There is a key card reader painted red." << endl;
+	        goto junkyard;
+	    }
+	    if (has_red_card == true)
+	    {
+	        cout << "You swipe the card and hear a beep." << endl;
+	        goto terminal;
+	    }
+	}
+	if (junkyard_choice < 1 || junkyard_choice > 2)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto junkyard;
+	}
+	
+    //Terminal
+    terminal:
+    cout << "(1) Northern Gate" << endl;
+	cout << "(2) Escape Gate" << endl;
+	
+	cin >> terminal_choice;
+	
+	if (terminal_choice == 1)
+	{
+	    cout << "You go through the northern gate into the Junkyard." << endl;
+	    goto junkyard;
+	}
+	if (terminal_choice == 2)
+	{
+	    cout << "You must enter a code into the terminal in order to escape." << endl;
+	    if (has_code_note == false)
+	    {
+	        cout << "You have no idea what the code is..." << endl;
+	        goto terminal;
+	    }
+	    if (has_code_note == true)
+	    {
+	        cout << "You look at the note: " << randomcode << endl;
+	        cout << "Enter the code to escape: ";
+	        int enterrandomcode;
+	        cin >> enterrandomcode;
+	        if (enterrandomcode == randomcode)
+	        {
+	            cout << "You have entered the correct code!" << endl;
+	            cout << "You head into the escape area." << endl;
+	            goto escape;
+	        }
+	        if (enterrandomcode != randomcode)
+	        {
+	            cout << "You have entered the incorrect code!" << endl;
+	            goto terminal;
+	        }
+	    }
+	}
+	if (terminal_choice < 1 || terminal_choice > 2)
+	{
+	    cout << "Invalid Selection." << endl;
+	    goto terminal;
+	}
+	
+    //Escape
+    escape:
+    cout << "Congratulations! You have escaped the area!" << endl;
+    goto end;
+	
     
     
     
@@ -790,6 +4381,8 @@ int main()
     end:
     return 0;
 }
+
+
 
 
 
