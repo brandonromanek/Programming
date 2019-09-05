@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
 
 using namespace std;
 string username {"Username"};
@@ -135,8 +137,9 @@ int terminal_choice{0};
 int escape_choice{0};
 int randomcode = rand() % 1000 + 9999;
 int random_code_note = randomcode;
-bool dog_alive == true;
-
+bool dog_alive = true;
+int random_fight_outcome{};
+int random_fight_start{};
 
 //Save Initialization
 string save_file1{"Empty"};
@@ -156,6 +159,7 @@ int soundfx_volume{100};
 int main() 
 {
     srand (time(NULL));
+
     //Main Menu
     cout << "Welcome to the game!" << endl;
     cout << "Press [ENTER] To Begin" << endl;
@@ -897,6 +901,25 @@ int main()
     cout << "You awake in a strange room with no recollection of how you arrived there." << endl;
     //Starting House
     start:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Northern Door" << endl;
     cout << "(2) Eastern Door" << endl;
     cout << "(3) Southern Door" << endl;
@@ -950,6 +973,25 @@ int main()
     
     //Backyard
     backyard:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Fence" << endl;
     cout << "(2) Trashcan" << endl;
     cout << "(3) Bush" << endl;
@@ -971,7 +1013,7 @@ int main()
         if (has_knife == false)
         {
             cout << "You find a knife." << endl;
-            has_knife == true;
+            has_knife = true;
             goto backyard;
         }
         if (has_knife == true)
@@ -993,6 +1035,25 @@ int main()
     
     //Front Yard
     frontyard:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Ocean" << endl;
     cout << "(2) Northern Door" << endl;
     cout << "(3) East" << endl;
@@ -1026,6 +1087,25 @@ int main()
     }
     //Street 1
     street1:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Garbage Can" << endl;
     cout << "(2) Northern Gate" << endl;
     cout << "(3) East" << endl;
@@ -1061,6 +1141,25 @@ int main()
     
     //Sidewalk 1
     sidewalk1:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) North" << endl;
     cout << "(2) East" << endl;
     cout << "(3) Southern Window" << endl;
@@ -1090,6 +1189,25 @@ int main()
     
     //Power Tools
     powertools:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Power Tool Section" << endl;
     cout << "(2) Southern Door" << endl;
     
@@ -1100,7 +1218,7 @@ int main()
         if (has_chainsaw == false)
         {
             cout << "You find a chainsaw!" << endl;
-            has_chainsaw == true;
+            has_chainsaw = true;
             goto powertools;
         }
         if (has_chainsaw == true)
@@ -1121,6 +1239,25 @@ int main()
     }
     //Hardware Store
     hardwarestore:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Backpack" << endl;
     cout << "(2) Northern Door" << endl;
     cout << "(3) Eastern Exit" << endl;
@@ -1133,11 +1270,11 @@ int main()
         if (has_backpack1 == false)
         {
             cout << "You find a backpack. You can now carry 15 items!" << endl;
-            has_backpack1 == true;
-            player_inventory_space == 15;
+            has_backpack1 = true;
+            player_inventory_space = 15;
             goto hardwarestore;
         }
-        if (has_backpack1 = true || has_backpack2 == true)
+        if (has_backpack1 == true || has_backpack2 == true)
         {
             cout << "You already have a backpack." << endl;
             goto hardwarestore;
@@ -1166,6 +1303,25 @@ int main()
     
     //Appliances
     appliances:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Northern Door" << endl;
     
     cin >> appliances_choice;
@@ -1182,6 +1338,25 @@ int main()
     
     //Sidewalk 2
     sidewalk2:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Northern Window" << endl;
     cout << "(2) East" << endl;
     cout << "(3) South" << endl;
@@ -1210,6 +1385,25 @@ int main()
     
     //Sidewalk 3
     sidewalk3:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) North" << endl;
     cout << "(2) East" << endl;
     cout << "(3) Southern Window" << endl;
@@ -1240,6 +1434,25 @@ int main()
     
     //Back Office
     backoffice:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Desk" << endl;
     cout << "(2) Eastern Door" << endl;
     cout << "(3) Southern Door" << endl;
@@ -1251,7 +1464,7 @@ int main()
         if (has_sewer_key == false)
         {
             cout << "You search the desk and find a small silver key." << endl;
-            has_sewer_key == true;
+            has_sewer_key = true;
             goto backoffice;
         }
         if (has_sewer_key == true)
@@ -1277,6 +1490,25 @@ int main()
     }
     //Alley
     alley:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
 	cout << "(1) Northern Door" << endl;
 	cout << "(2) Southern Gate Entrance" << endl;
 	
@@ -1289,7 +1521,7 @@ int main()
 	}
 	if (alley_choice == 2)
 	{
-		if (has_sewer_key = false)
+		if ((has_sewer_key = false))
 		{
 			cout << "The door is locked." << endl;
 			goto alley;
@@ -1307,6 +1539,25 @@ int main()
 	}
     //Southwest Sewer
     swsewer:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) North" << endl;
 	cout << "(2) Northeast Sewer" << endl;
 	cout << "(3) Garbage Pile" << endl;
@@ -1375,6 +1626,25 @@ int main()
 	}
     //Northwest Sewer
     nwsewer:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Northeast Sewer" << endl;
 	cout << "(2) Eastern Gate" << endl;
 	cout << "(3) Southwest Sewer" << endl;
@@ -1427,6 +1697,25 @@ int main()
 	}
     //Garage
     garage:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Door" << endl;
 	cout << "(2) Workbench" << endl;
 	cout << "(3) Eastern Window" << endl;
@@ -1442,12 +1731,12 @@ int main()
 	}
 	if (garage_choice == 2)
 	{
-		if (has_crowbar == false);
-		{
+        if ((has_crowbar = false))
+        {
 			cout << "You find a crowbar." << endl;
-			has_crowbar == true;
+			has_crowbar = true;
 			goto garage;
-		}
+        }
 		if (has_crowbar == true)
 		{
 			cout << "There are some old rusty tools here..." << endl;
@@ -1476,6 +1765,25 @@ int main()
 	}
     //Mailbox
     mailbox:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) Mailbox" << endl;
 	cout << "(3) East" << endl;
@@ -1514,6 +1822,25 @@ int main()
 	
     //Street 2
     street2:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -1549,6 +1876,25 @@ int main()
 	
     //Street 3
     street3:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) Eastern Window" << endl;
@@ -1583,6 +1929,25 @@ int main()
 	}
     //Street 4
     street4:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Window" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) Eastern Window" << endl;
@@ -1618,6 +1983,25 @@ int main()
 	
     //Street 5
     street5:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Entrance" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) Eastern Window" << endl;
@@ -1661,6 +2045,25 @@ int main()
 	
     //Street 6
     street6:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Window" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) Eastern Window" << endl;
@@ -1695,6 +2098,25 @@ int main()
 	}
     //Street 7
     street7:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -1729,6 +2151,25 @@ int main()
 	}
     //Sidewalk 4
     sidewalk4:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -1763,6 +2204,25 @@ int main()
 	}
     //Market
     market:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Door" << endl;
 	cout << "(2) Eastern Exit" << endl;
 	cout << "(3) Southern Door" << endl;
@@ -1794,7 +2254,7 @@ int main()
 	    if (player_strength > 4)
 	    {
 	        cout << "You open the door using brute force and unlock it on the other side." << endl;
-	        storage_door_unlocked == true;
+	        storage_door_unlocked = true;
 	        goto storageroom1;
 	    }
 	}
@@ -1806,6 +2266,25 @@ int main()
 	
     //Storage Room 1
     storageroom1:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Table" << endl;
 	cout << "(2) Northern Door" << endl;
 	cout << "(3) Storage Rack" << endl;
@@ -1818,7 +2297,7 @@ int main()
 	    if (has_flashlight == false)
 	    {
 	        cout << "You find a flashlight. This will definitely come in handy." << endl;
-	        has_flashlight == true;
+	        has_flashlight = true;
 	        goto storageroom1;
 	    }
 	    if (has_flashlight == true)
@@ -1832,7 +2311,7 @@ int main()
 	    if (storage_door_unlocked == false)
 	    {
 	        cout << "You unlock the door on the way out." << endl;
-	        storage_door_unlocked == true;
+	        storage_door_unlocked = true;
 	        goto market;
 	    }
 	    if (storage_door_unlocked == true)
@@ -1846,7 +2325,7 @@ int main()
 	    if (has_handgun == false)
 	    {
 	        cout << "You find a handgun with a box of ammunition." << endl;
-	        has_handgun == true;
+	        has_handgun = true;
 	        goto storageroom1;
 	    }
 	    if (has_handgun == true)
@@ -1878,6 +2357,25 @@ int main()
 	
     //Dumpster
     dumpster:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Garbage Pile" << endl;
 	cout << "(2) Northern Window" << endl;
 	cout << "(3) Eastern Gate" << endl;
@@ -1933,6 +2431,25 @@ int main()
 	}
     //Sidewalk 5
     sidewalk5:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Northwest Sewer" << endl;
 	cout << "(2) East" << endl;
 	cout << "(3) South" << endl;
@@ -1970,6 +2487,25 @@ int main()
 	
     //Sidewalk 6
     sidewalk6:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Window" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -2005,6 +2541,25 @@ int main()
 	
     //Sidewalk 7
     sidewalk7:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -2039,6 +2594,25 @@ int main()
 	}
     //Street 8
     street8:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -2073,6 +2647,25 @@ int main()
 	}
     //Classroom
     classroom:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Desk" << endl;
 	cout << "(2) Chalkboard" << endl;
 	cout << "(3) Eastern Door" << endl;
@@ -2108,6 +2701,25 @@ int main()
 	}
     //Computer Lab
     computerlab:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Computer" << endl;
 	cout << "(2) Northern Door" << endl;
 	cout << "(3) Southern Door" << endl;
@@ -2116,7 +2728,7 @@ int main()
 	
 	if (computerlab_choice == 1)
 	{
-	    if (generator_on = true)
+	    if ((generator_on = true))
 	    {
 	        cout << "You boot up the PC and are prompted to enter a password." << endl;
 	        cin >> password;
@@ -2166,6 +2778,25 @@ int main()
 	
     //Locker Room
     lockerroom:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Shower" << endl;
 	cout << "(2) Northern Door" << endl;
 	cout << "(3) Lockers" << endl;
@@ -2200,6 +2831,25 @@ int main()
 	}
     //Bathroom
     bathroom:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Stall 1" << endl;
 	cout << "(2) Stall 2" << endl;
 	cout << "(3) Stall 3" << endl;
@@ -2241,6 +2891,25 @@ int main()
 	
     //Street 9
     street9:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) Northern Window" << endl;
 	cout << "(3) East" << endl;
@@ -2275,6 +2944,25 @@ int main()
 	}
     //Sidewalk 8
     sidewalk8:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -2309,6 +2997,25 @@ int main()
 	}
     //Sidewalk 9
     sidewalk9:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -2343,6 +3050,25 @@ int main()
 	}
     //Sidewalk 10
     sidewalk10:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Window" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) Eastern Window" << endl;
@@ -2377,6 +3103,25 @@ int main()
 	}
     //Parking Lot 3
     parkinglot3:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Gate" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) Vehicle" << endl;
@@ -2406,6 +3151,25 @@ int main()
 	
     //Sidewalk 11
     sidewalk11:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) East" << endl;
 	cout << "(3) South" << endl;
@@ -2435,6 +3199,25 @@ int main()
 	
     //Parking Lot 1
     parkinglot1:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) Eastern Window" << endl;
@@ -2469,6 +3252,25 @@ int main()
 	}
     //Parking Lot 2
     parkinglot2:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) Eastern Window" << endl;
@@ -2502,7 +3304,7 @@ int main()
 	    if (has_gps == false)
 	    {
 	        cout << "You find a GPS inside of an unlocked car. How irresponsible." << endl;
-	        has_gps == true;
+	        has_gps = true;
 	        goto parkinglot2;
 	    }
 	    if (has_gps == true)
@@ -2519,6 +3321,25 @@ int main()
 	
     //Street 10
     street10:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -2553,6 +3374,25 @@ int main()
 	}
     //North Hallway
     northhallway:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Door" << endl;
 	cout << "(2) Eastern Door" << endl;
 	cout << "(3) Southern Stairs" << endl;
@@ -2583,6 +3423,25 @@ int main()
 	
     //Research Room
     researchroom:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Research Table" << endl;
 	cout << "(2) Northern Stairs" << endl;
 	cout << "(3) Corpse" << endl;
@@ -2596,7 +3455,7 @@ int main()
 	    if (has_code_note == false)
 	    {
 	        cout << "You find a note with a random number on it:" << randomcode << endl;
-	        has_code_note == true;
+	        has_code_note = true;
 	        goto researchroom;
 	    }
 	    if (has_code_note == true)
@@ -2642,6 +3501,25 @@ int main()
 	
     //Office
     office:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Northern Stairwell" << endl;
 	cout << "(2) Southern Door" << endl;
     
@@ -2673,6 +3551,25 @@ int main()
 	
     //Lobby
     lobby:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) Elevator" << endl;
 	cout << "(3) Northern Door" << endl;
@@ -2722,6 +3619,25 @@ int main()
 	
     //Building Front
     buildingfront:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) Welcome Sign" << endl;
 	cout << "(3) Northern Entrance" << endl;
@@ -2771,6 +3687,25 @@ int main()
 	
     //Sidewalk 12
     sidewalk12:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -2806,6 +3741,25 @@ int main()
 	
     //Sidewalk 13
     sidewalk13:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -2840,6 +3794,25 @@ int main()
 	}
     //Sporting Goods
     sportinggoods:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Sports Equipment" << endl;
 	cout << "(2) Northern Exit" << endl;
 	cout << "(3) Southern Door" << endl;
@@ -2851,10 +3824,10 @@ int main()
 	    if (has_bat == false)
 	    {
 	        cout << "There is a large assortment of sports equipment. You pick up a baseball bat." << endl;
-	        has_bat == true;
+	        has_bat = true;
 	        goto sportinggoods;
 	    }
-	    if (has_bat = true)
+	    if ((has_bat = true))
 	    {
 	        cout << "You don't find anything else that would be useful." << endl;
 	        goto sportinggoods;
@@ -2880,6 +3853,25 @@ int main()
 	
     //Shoe Area
     shoearea:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Shoe Rack" << endl;
 	cout << "(2) Northern Door" << endl;
 	cout << "(3) Locker" << endl;
@@ -2927,7 +3919,7 @@ int main()
 	    if (has_boots == false)
 	    {
 	        cout << "You find some heavy duty boots and slip them on." << endl;
-	        has_boots == true;
+	        has_boots = true;
 	        goto shoearea;
 	    }
 	    if (has_boots == true)
@@ -2944,6 +3936,25 @@ int main()
 	}
     //Sidewalk 14
     sidewalk14:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) East" << endl;
 	cout << "(3) Southern Entrance" << endl;
@@ -2973,6 +3984,25 @@ int main()
 	
     //Kitchen
     kitchen:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Chopping Table" << endl;
 	cout << "(2) Northern Exit" << endl;
 	cout << "(3) Cabinet" << endl;
@@ -2986,7 +4016,7 @@ int main()
 	    if (has_butcher_knife == false)
 	    {
 	        cout << "You find a shiny new butcher's knife." << endl;
-	        has_butcher_knife == true;
+	        has_butcher_knife = true;
 	        goto kitchen;
 	    }
 	    if (has_butcher_knife == true)
@@ -3005,7 +4035,7 @@ int main()
 	    if (has_posion == false)
 	    {
 	        cout << "Hmm. Not sure why poison is in the kitchen. You take the poison." << endl;
-	        has_posion == true;
+	        has_posion = true;
 	        goto kitchen;
 	    }
 	    if (has_posion == true)
@@ -3021,10 +4051,10 @@ int main()
 	}
 	if (kitchen_choice == 5)
 	{
-	    if (has_meat = false)
+	    if ((has_meat = false))
 	    {
 	        cout << "Mmm, some meat! It is a little cold. You take it anyway." << endl;
-	        has_meat == true;
+	        has_meat = true;
 	        goto kitchen;
 	    }
 	    if (has_meat == true)
@@ -3041,6 +4071,25 @@ int main()
 	
     //Restaurant
     restaurant:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Exit" << endl;
 	cout << "(2) Northern Door" << endl;
 	cout << "(3) Southern Exit" << endl;
@@ -3070,6 +4119,25 @@ int main()
 	
     //Street 11
     street11:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North Entrance" << endl;
 	cout << "(3) East" << endl;
@@ -3105,6 +4173,25 @@ int main()
 	
     //Storage Room 2
     storageroom2:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Door" << endl;
 	cout << "(2) Storage Rack" << endl;
 	cout << "(3) Utility Closet" << endl;
@@ -3139,6 +4226,25 @@ int main()
 	}
     //Break Room
     breakroom:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Duffle Bag" << endl;
 	cout << "(2) Northern Door" << endl;
 	cout << "(3) Southern Stairs" << endl;
@@ -3150,7 +4256,7 @@ int main()
 	    if (has_green_card == false)
 	    {
 	        cout << "You dig through the duffle bag and find a green keycard." << endl;
-	        has_green_card == true;
+	        has_green_card = true;
 	        goto breakroom;
 	    }
 	    if (has_green_card == true)
@@ -3177,6 +4283,25 @@ int main()
 	
     //Basement
     basement:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Northern Stairs" << endl;
 	cout << "(2) Southern Stairs" << endl;
 	
@@ -3200,6 +4325,25 @@ int main()
 	
     //Boiler Room
     boilerroom:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Door" << endl;
 	cout << "(2) Northern Stairs" << endl;
 	cout << "(3) Generator" << endl;
@@ -3221,7 +4365,7 @@ int main()
 	    if (player_intelligence > 4)
 	    {
 	        cout << "You and your big brain figure out how to turn on the generator, activating power in the facility." << endl;
-	        generator_on == true;
+	        generator_on = true;
 	        goto boilerroom;
 	    }
 	    if (player_intelligence < 5)
@@ -3238,6 +4382,25 @@ int main()
 	
     //Street 12
     street12:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) Northern Window" << endl;
 	cout << "(3) East" << endl;
@@ -3273,6 +4436,25 @@ int main()
 	
     //Sidewalk 15
     sidewalk15:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -3307,6 +4489,25 @@ int main()
 	}
     //Sidewalk 16
     sidewalk16:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) South" << endl;
@@ -3336,6 +4537,25 @@ int main()
 	
     //Sidewalk 17
     sidewalk17:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Window" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) South" << endl;
@@ -3365,6 +4585,25 @@ int main()
 	
     //Sidewalk 18
     sidewalk18:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) North" << endl;
 	cout << "(2) Eastern Barbed-Wire Fence" << endl;
 	
@@ -3388,6 +4627,25 @@ int main()
 	
     //Sidewalk 19
     sidewalk19:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) Eastern Fence" << endl;
 	cout << "(3) South" << endl;
@@ -3417,6 +4675,25 @@ int main()
 	
     //Sidewalk 20
     sidewalk20:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Window" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -3452,6 +4729,25 @@ int main()
 	
     //Sidewalk 21
     sidewalk21:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Window" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -3487,6 +4783,25 @@ int main()
 	
     //Street 13
     street13:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -3522,6 +4837,25 @@ int main()
 	
     //Street 14
     street14:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Window" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) Eastern Window" << endl;
@@ -3557,6 +4891,25 @@ int main()
 	
     //Street 15
     street15:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Window" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) Eastern Entrance" << endl;
@@ -3592,6 +4945,25 @@ int main()
 	
     //Street 16
     street16:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Window" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) Eastern Window" << endl;
@@ -3627,6 +4999,25 @@ int main()
 	 
     //Street 17
     street17:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Window" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -3662,6 +5053,25 @@ int main()
 	
     //Street 18
     street18:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -3696,6 +5106,25 @@ int main()
 	}
     //Sidewalk 22
     sidewalk22:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) East" << endl;
@@ -3730,6 +5159,25 @@ int main()
 	}
     //Front Desk
     frontdesk:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Northern Exit" << endl;
 	cout << "(2) Southern Door" << endl;
 	
@@ -3753,6 +5201,25 @@ int main()
 	
     //Power Plant
     powerplant:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Table" << endl;
 	cout << "(2) Northern Door" << endl;
 	cout << "(3) Southern Gate" << endl;
@@ -3764,7 +5231,7 @@ int main()
         if (has_red_card == false)
         {
             cout << "You pick up a red key card from the table." << endl;
-            has_red_card == true;
+            has_red_card = true;
             goto powerplant;
         }
         if (has_red_card == true)
@@ -3799,6 +5266,25 @@ int main()
 	
     //Southeast Sewer
     sesewer:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Southwest Sewer" << endl;
 	cout << "(2) Northern Gate" << endl;
 	cout << "(3) Northeast Sewer" << endl;
@@ -3847,7 +5333,7 @@ int main()
 	}
 	if (sesewer_choice == 4)
 	{
-	    cout << "Ther is a dock with some boats that appear to be functioning. This could be your escape! Find a way in." << endl; << endl;
+	    cout << "There is a dock with some boats that appear to be functioning. This could be your escape! Find a way in." << endl;
 	    goto sesewer;
 	}
 	if (sesewer_choice < 1 || sesewer_choice > 4)
@@ -3858,6 +5344,25 @@ int main()
 	
     //Northeast Sewer
     nesewer:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Northwest Sewer" << endl;
 	cout << "(2) Southeast Sewer" << endl;
 	cout << "(3) Southern Gate" << endl;
@@ -3903,6 +5408,25 @@ int main()
 	
     //Sidewalk 23
     sidewalk23:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) Northern Gate" << endl;
 	cout << "(3) South" << endl;
@@ -3932,6 +5456,25 @@ int main()
 	
     //Sidewalk 24
     sidewalk24:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) South" << endl;
@@ -3961,6 +5504,25 @@ int main()
 	
     //Sidewalk 25
     sidewalk25:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) Southern Window" << endl;
@@ -3990,6 +5552,25 @@ int main()
 	
     //Guns
     guns:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Revolver" << endl;
 	cout << "(2) Shotgun" << endl;
 	cout << "(3) Assault Rifle" << endl;
@@ -4007,7 +5588,7 @@ int main()
 	        if (revolver_choice == 'y' || revolver_choice == 'Y')
 	        {
 	            cout << "You take the revolver." << endl;
-	            has_revolver == true;
+	            has_revolver = true;
 	            goto guns;
 	        }
 	        if (revolver_choice != 'y' || revolver_choice != 'Y')
@@ -4033,7 +5614,7 @@ int main()
 	        if (shotgun_choice == 'y' || shotgun_choice == 'Y')
 	        {
 	            cout << "You take the shotgun." << endl;
-	            has_shotgun == true;
+	            has_shotgun = true;
 	            goto guns;
 	        }
 	        if (shotgun_choice != 'y' || shotgun_choice != 'Y')
@@ -4059,7 +5640,7 @@ int main()
 	        if (ar_choice == 'y' || ar_choice == 'Y')
 	        {
 	            cout << "You take the assault rifle." << endl;
-	            has_ar == true;
+	            has_ar = true;
 	            goto guns;
 	        }
 	        if (ar_choice != 'y' || ar_choice != 'Y')
@@ -4076,12 +5657,31 @@ int main()
 	}
 	if (guns_choice < 1 || guns_choice > 3)
 	{
-	    cout << "Invalid Selection.
+	    cout << "Invalid Selection." << endl;
 	    goto guns;
 	}
 	
     //Armory
     armory:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Western Exit" << endl;
 	cout << "(2) Northern Metal Door" << endl;
 	cout << "(3) Desk" << endl;
@@ -4154,6 +5754,25 @@ int main()
 	
     //Vault
     vault:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Large Backpack" << endl;
 	cout << "(2) Northern Vault Exit" << endl;
 	
@@ -4164,10 +5783,10 @@ int main()
 	    if (has_backpack2 == false)
 	    {
 	        cout << "You find a large backpack. You can now hold 20 items." << endl;
-	        has_backpack2 == true;
+	        has_backpack2 = true;
 	        if (has_backpack2 == true)
 	        {
-	            player_inventory_space == 20;
+	            player_inventory_space = 20;
 	            goto vault;
 	        }
 	    }
@@ -4190,6 +5809,25 @@ int main()
 	
     //Sidewalk 26
     sidewalk26:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) Northern Window" << endl;
 	cout << "(3) South" << endl;
@@ -4219,6 +5857,25 @@ int main()
 	
     //Sidewalk 27
     sidewalk27:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) South" << endl;
@@ -4248,6 +5905,25 @@ int main()
 	
     //Sidewalk 28
     sidewalk28:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) West" << endl;
 	cout << "(2) North" << endl;
 	cout << "(3) Southern Entrance" << endl;
@@ -4273,7 +5949,7 @@ int main()
 	        if (has_meat == true && has_posion == true)
 	        {
 	            cout << "You put some poison on the meat and feed it to the dog. Your soul screams as the dog's leaves it's body." << endl;
-	            dog_alive == false;
+	            dog_alive = false;
 	            goto junkyard;
 	        }
 	        if (has_meat == false || has_posion == false)
@@ -4295,6 +5971,25 @@ int main()
 	
     //Junk Yard:
     junkyard:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Northern Exit" << endl;
 	cout << "(2) Southern Gate" << endl;
 	
@@ -4326,6 +6021,25 @@ int main()
 	
     //Terminal
     terminal:
+    random_fight_start = rand() % 100 + 1;
+    if (random_fight_start < 10)
+    {
+        cout << "You are under attack!" << endl;
+        random_fight_outcome = rand() % 100 + 1;
+        if (random_fight_outcome < 5)
+        {
+            cout << "You have died." << endl;
+            goto end;
+        }
+        if (random_fight_outcome > 5)
+        {
+            cout << "You have won the fight!" << endl;
+        }
+    }
+    if (random_fight_start > 10)
+    {
+        cout << "The area is clear." << endl;
+    }
     cout << "(1) Northern Gate" << endl;
 	cout << "(2) Escape Gate" << endl;
 	
@@ -4381,8 +6095,3 @@ int main()
     end:
     return 0;
 }
-
-
-
-
-
